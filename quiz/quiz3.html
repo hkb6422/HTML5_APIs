@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Quiz</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      //array to hold answers to questionnaire
+      var answers = new Array(3);
+      answers[0] = "We need to know if the browser supports the API before we try to get any location information";
+      answers[1] = "navigator.geolocation";
+      answers[2] = "A geolocation object that allows us to access the location of the device";
+      answers[3] = "A reference to the geolocation object";
+      
+      var totalQuestions = 4;
+      var totalChoices = 3;
+      
+      function getScore(form) {
+        var score = 0;
+        var buttonSelected;
+        for (i=0; i<totalQuestions; i++) { 
+          iterateChoices = i*totalChoices
+          for (y=0; y<totalChoices; y++) {
+            buttonSelected = form.elements[iterateChoices + y];
+            if (buttonSelected.checked && buttonSelected.value == answers[i]) {
+                score++;
+                break;
+            }
+          }
+        
+      document.getElementById("finalscore").innerHTML= "You got " + (score) + " out of " + (totalQuestions) + " questions correct!";
+        }
+      
+      }
+      	
+    </script>
+  </head>
+  <body>
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-md-offset-3">
+            <h2>Browser Support Quiz</h2>
+            <form name="Quiz">
+              <br><b>1. Which statement signifies why we need to test if the browser supports the geolocation API?</b>
+              <br><input type="radio" name="q1" value="We need to know if the browser supports the API before we try to get any location information">We need to know if the browser supports the API before we try to get any location information
+              <br><input type="radio" name="q1" value="The geolocation API is always supported so it is not necessary">The geolocation API is usually supported so it is not necessary
+              <br><input type="radio" name="q1" value="The geolocation API will work regardless of testing for support">The geolocation API will work regardless of testing for support 
+              <br><b>2. How do we access the geolocation API?</b>
+              <br><input type="radio" name="q2" value="navigator">navigator
+              <br><input type="radio" name="q2" value="navigator.geolocation">navigator.geolocation
+              <br><input type="radio" name="q2" value="navigator.geolocation.API">navigator.geolocation.API
+              <br><b>3. When checking if the geolocation API is supported by the browser, what is the statement actually testing for?</b>
+              <br><input type="radio" name="q3" value="A geolocation object that allows us to access the location of the device">A geolocation object that allows us to access the location of the device
+              <br><input type="radio" name="q3" value="Our location is correct">Our location is correct
+              <br><input type="radio" name="q3" value="Our device is suitable to use">Our device is suitable to use
+              <br><b>4. What does testing for the presence of the geolocation API return?</b>
+              <br><input type="radio" name="q4" value="A message">A message
+              <br><input type="radio" name="q4" value="A reference to the geolocation object">A reference to the geolocation object
+              <br><input type="radio" name="q4" value="A Position object">A Position object
+              <br><br><input type = "button" class="btn btn-info btn-responsive-next" value = "Get Score" onClick="getScore(this.form)">
+              <br><br><input type="reset" value="Reset"  class="btn btn-info btn-responsive-next">
+            </form>
+            <br>
+            <p id = "finalscore"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script> 
+  </body>
+</html>

@@ -1,0 +1,281 @@
+
+#myCanvas{
+  background:white; 
+  border: 3px solid black;   
+  width: 100%; 
+}
+
+#finalscore{
+ font-weight: bold;
+}
+
+
+.btn-editor{
+    margin-right:10px;
+}
+
+#editor { 
+  height: 300px;
+  width: 400px;
+  max-width: 100%;
+}
+
+#editor2 { 
+  height: 300px;
+  width: 400px;
+  max-width: 100%;
+}
+
+#editor3 { 
+  height: 300px;
+  width: 400px;
+  max-width: 100%;
+}
+
+#frame {
+  margin-top: 40px;
+  border: black 2px solid;
+  background-color: white;
+  max-width:100%;
+  margin-bottom: 40px;
+}
+
+.modal-dialog {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin:0;
+}
+.modal-content {   
+      height: 100%;
+      border-radius: 0;
+      overflow:auto;
+}
+
+
+/* Body */
+body {
+  background: linear-gradient(white,#303030 );
+  font-size: 14px;
+}
+
+
+.btn-default {
+background-color:#9999CC
+}
+
+/* Default tab colour */
+.nav-tabs>li>a {
+  background-color: black; 
+  border-color: white;
+  color: white;
+  height:55px;
+}
+
+/* Tab active */
+.nav-tabs>li.active>a, 
+.nav-tabs>li.active>a:hover 
+ {
+  color: white;
+  background-color: #996699;
+}
+
+/* Hover tab colour */
+.nav-tabs>li>a:hover {
+  border-color: black;
+  background-color: #333333;
+}
+
+h2 {
+  color: black;
+}
+
+h3 {
+   color: #990099;
+}
+
+h4{
+  color:#CC0066 ;
+}
+
+
+video {
+  width: 100%    !important;
+  height: auto   !important;
+}
+
+
+iframe {
+    max-width: 100%;
+    
+}
+
+.btn-group {
+  padding-right: 10px;
+}
+
+.img-rounded {  
+  border-radius: 30px;  
+}  
+
+
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+}
+
+.navbar-wrapper .navbar .container {
+  width: auto;
+}
+
+
+.welcome{
+border: 5px solid #33CCCC;
+background-image: url("halftone.png");
+border-radius: 25px;
+margin-left: 20px;
+margin-right: 20px;
+margin-bottom: 20px;
+}
+
+
+.marketing .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: medium;
+}
+.marketing .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.marketing.container {
+margin-top: 40px;
+margin-bottom: 40px;
+border: 2px solid black;
+padding-top: 10px;
+border-radius: 25px;
+background-image: url("halftone.png");
+padding-bottom: 10px;
+}
+
+.col-md-12 p{
+   margin-right: 10px;
+  margin-left: 10px;
+}
+
+
+.panel {
+  background-color:#F0F0F0 
+}
+
+
+/*Tablet*/
+@media (max-width: 768px) {
+  body {
+    font-size: 12px;
+  }
+  h3 {
+    font-size: 16px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  h4 {
+    font-size: 14px;
+  }
+
+  .btn-responsive-quiz {
+    padding:8px 12px;
+    font-size:90%;
+  }
+
+  .btn-responsive-next {
+    padding:3px 6px;
+    font-size:90%;
+  }
+  
+  .IframeSize{
+    padding:0;
+    margin:0;
+    height:300px;
+    width:400px;
+  } 
+
+}
+
+/*Mobile*/
+
+@media (max-width: 480px ) {
+  body {
+    font-size: 10px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  h3 {
+    font-size: 12px;
+  }
+  h2 {
+    font-size: 14px;
+  }
+  
+  h4 {
+    font-size: 11px;
+  }
+  .btn-responsive-quiz {
+    padding:7px 6px;
+    font-size:80%;
+  }
+
+ .btn-responsive-next {
+    padding:2px 4px;
+    font-size:80%;
+  }
+
+  .btn-group {
+    font-size:80%;
+  }
+
+  .nav-tabs>li>a {
+    height:30px;
+  }
+
+  .IframeSize{
+    padding:0;
+    margin:0;
+    height:231px;
+    width:328px;
+  } 
+}
+
+.Geolocation {
+  margin-left: 40px;
+  margin-right: 40px;
+  padding-bottom: 20px; 
+}
+
+.Geolocation_Content {
+  margin-top: 30px;
+}
+
+.sliders {
+      width: 100%;
+  }
+
+      
+.fieldsetCSS { 
+    border:1px solid #990099 
+}
+
+.logo{
+  padding-top: 80px;
+  padding-bottom: 20px;
+}

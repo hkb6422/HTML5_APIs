@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz</title>
+    <meta charset="utf-8">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      //array to hold answers to questionnaire
+      var answers = new Array(4);
+      answers[0] = "The getPosition method will return your location once whilst watchLocation will continuously<br>return information as your location changes";
+      answers[1] = "3";
+      answers[2] = "to cancel an ongoing watchPosition call";
+      answers[3] = "unique identifer returned from the watchPosition method";
+      answers[4] = "successCallBack";
+      
+      
+      var totalQuestions = 5;
+      var totalChoices = 3;
+      
+      function getScore(form) {
+        var score = 0;
+        var buttonSelected;
+        for (i=0; i<totalQuestions; i++) { 
+          iterateChoices = i*totalChoices
+          for (y=0; y<totalChoices; y++) {
+            buttonSelected = form.elements[iterateChoices + y];
+            if (buttonSelected.checked && buttonSelected.value == answers[i]) {
+                score++;
+                break;
+            }
+          }
+        
+      document.getElementById("finalscore").innerHTML= "You got " + (score) + " out of " + (totalQuestions) + " questions correct!";
+        }
+      
+      }
+    </script>
+  </head>
+  <body>
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-md-offset-3">
+            <h2>Methods Quiz</h2>
+            <form name="Quiz">
+              <br><b>1.What is the difference between the getPosition and watchPosition methods?</b>
+              <br><input type="radio" name="q1" value="The getPosition method will return your location once whilst watchLocation will continuously<br>return information as your location changes">The getPosition method will return your location once whilst watchLocation will continuously<br>return information as your location changes
+              <br><input type="radio" name="q1" value="The getLocation method only accepts one parameter whilst watchPosition accepts three">The getLocation method only accepts one parameter whilst watchPosition accepts three
+              <br><input type="radio" name="q1" value="There is no difference between the methods">There is no difference between the methods
+              <br><b>2.How many parameters does the watchPositon and getPosition methods take?</b>
+              <br><input type="radio" name="q2" value="1">1
+              <br><input type="radio" name="q2" value="2">2
+              <br><input type="radio" name="q2" value="3">3
+              <br><b>3.Why is the clearWatch method used?</b>
+              <br><input type="radio" name="q3" value="to cancel an ongoing watchPosition call">to cancel an ongoing watchPosition call
+              <br><input type="radio" name="q3" value="to cancel the getPosition call">to cancel the getPosition call
+              <br><input type="radio" name="q3" value="to cancel all location calls from the getPosition and watchPosition calls">to cancel all location calls from the getPosition and watchPosition calls
+              <br><b>4.What parameter does the clearWatch method accept?</b>
+              <br><input type="radio" name="q4" value="unique identifer returned from the watchPosition method">unique identifer returned from the watchPosition method
+              <br><input type="radio" name="q4" value="position object from the getPosition and watchPosition call">position object from the getPosition and watchPosition call
+              <br><input type="radio" name="q4" value="error object from the getPosition and watchPosition call">error object from the getPosition and watchPosition call 
+              <br><b>5. Which of the parameters is compulsory when calling the watchPosition and getPosition methods? </b>
+              <br><input type="radio" name="q5" value="successCallBack">successCallBack
+              <br><input type="radio" name="q5" value="none are compulsory">none are compulsory
+              <br><input type="radio" name="q5" value="errorCallBack">errorCallBack
+              <br><br><input type = "button" class="btn btn-info btn-responsive-next" value = "Get Score" onClick="getScore(this.form)">
+              <br><br><input type="reset" value="Reset"  class="btn btn-info btn-responsive-next">
+            </form>
+            <br>
+            <p id = "finalscore"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script> 
+  </body>
+</html>

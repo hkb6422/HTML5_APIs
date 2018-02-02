@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Drag and Drop example</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <style>
+      #dropZone{
+      background:white; 
+      border: 3px solid black;   
+      height: 200px;
+      width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container marketing">
+      <div class="row">
+        <div class="col-sm-4">
+          <br>
+          <p class="text-center"><img src="bridge.jpg" id ="image1" class="img-responsive" width="200" height="200" alt ="bridge"></p>
+        </div>
+        <div class="col-sm-4">
+          <h3 id ="dropZone" class="text-center">Drop element here</h3>
+        </div>
+        <div class="col-sm-4">
+          <h3 id ="startCount">Drag Start: 0</h3>
+          <h3 id ="endCount">Drag End: 0 </h3>
+          <h3 id ="enterCount">Drag Enter: 0 </h3>
+          <h3 id="overCount">Drag Over: 0 </h3>
+          <h3 id ="leaaveCount">Drag Leave: 0</h3>
+          <h3 id ="dropCount">Drop: 0 </h3>
+          <button class = "btn btn-warning btn-responsive-quiz" role="button" onClick="window.location.reload()">Reset</button>
+        </div>
+      </div>
+    </div>
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <script src="../js/bootstrap.min.js"></script> 
+    <script>
+      var count1 = 1;   
+      var count2 = 1; 
+      var count3 = 1;
+      var count4 = 1;
+      var count5 = 1;
+      var count6 = 1;
+      
+      
+      var draggable = document.getElementById("image1");
+      var droptarget = document.getElementById("dropZone");
+      
+      
+      draggable.addEventListener('dragstart', handleStart);
+      draggable.addEventListener('dragend'  , handleEnd);
+      
+      
+      droptarget.addEventListener('dragleave', handleLeave);
+      droptarget.addEventListener('drop'     , handledrop);
+      droptarget.addEventListener('dragenter', handleEnter);
+      droptarget.addEventListener('dragover' , handleOver);
+      
+      
+      
+      function handleStart(event) {
+          event.dataTransfer.setData("text",event.target.id);
+          count_start = count1++;
+          document.getElementById("startCount").innerHTML = "Drag Start: " +count_start;
+      }
+      
+      
+      function handleEnd(event) {
+          count_end = count2++;
+          document.getElementById("endCount").innerHTML = "Drag End: " +count_end;
+      }
+      
+      function handleEnter(event) {
+          count_enter = count3++;
+          document.getElementById("enterCount").innerHTML = "Drag Enter: " +count_enter;
+      }
+      
+      
+      function handleOver(event) {
+          count_over = count4++;
+          document.getElementById("overCount").innerHTML = "Drag Over: " +count_over;
+          event.preventDefault();
+      }
+      
+      function handleLeave(event) {
+          count_leave = count5++;
+          document.getElementById("leaaveCount").innerHTML = "Drag Leave: " +count_leave;
+          
+      }
+      
+      function handledrop(event) {
+          event.preventDefault();
+          var dragged_item=event.dataTransfer.getData("text");
+          event.target.appendChild(document.getElementById(dragged_item));
+          count_drop = count6++;
+          document.getElementById("dropCount").innerHTML = "Drop: " + count_drop;
+           
+      }
+      
+    </script>
+  </body>
+</html>

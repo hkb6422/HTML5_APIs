@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas Example</title>
+    <style>
+      #myCanvas{
+      background:white;
+      border: 3px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+
+    <script>
+      var canvas = document.getElementById("myCanvas");
+      window.onload = draw
+            
+      function draw() {
+      
+      if (canvas.getContext) {
+          var ctx = canvas.getContext("2d");
+          ctx.translate(200,200);
+          
+          x = 1 ;
+          y = 1 ;
+              
+          for (var i=0;i<30 ;i++){ 
+                  ctx.rotate(Math.PI*2/8);
+                  ctx.scale(x+=0.01, y+=0.01);
+                  ctx.fillStyle = getRgbColor();
+                  ctx.beginPath();
+                  ctx.arc(0,7,3,0,Math.PI*2,false);
+                  ctx.fill(); 
+                }
+            
+            }
+      
+      else {
+      
+      alert("Sorry your browser doesn't support the Canvas API");
+      	}
+      }
+      
+      function getRgbColor() {
+                  var r = 255*Math.random()|0;
+                  var g = 255*Math.random()|0;
+                  var b = 255*Math.random()|0;
+            
+                return "rgb(" + r + "," + g + "," + b + ")";
+            }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drag and Drop Example</title>
+    <style>
+      #dropZone{
+      border: 3px solid black;
+      height: 300px;
+      width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <img src = "bridge.jpg" id = "image1" width = "200" height = "200">
+    <h3 id = "dropZone">Drop Element Here</h3>
+    <h3 id = "startCount">Drag Start: 0</h3>
+    <h3 id = "endCount">Drag End: 0</h3>
+    <script>
+      var draggable = document.getElementById("image1");
+      var droptarget = document.getElementById("dropZone");
+      
+      draggable.addEventListener('dragstart',handleStart);
+      draggable.addEventListener('dragend', handleEnd);
+      
+      droptarget.addEventListener('dragleave',handleLeave);
+      droptarget.addEventListener('drop', handledrop);
+      droptarget.addEventListener('dragenter',handleEnter);
+      droptarget.addEventListener('dragover',handleOver);
+    </script>
+  </body>
+</html>

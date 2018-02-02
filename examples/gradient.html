@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Linear Gradient</title>
+    <meta charset="UTF-8">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container marketing">
+      <div class ="sliders">
+        <div class="col-xs-6">
+          <h4>Starting Colour</h4>
+          <fieldset class="fieldsetCSS">
+            <p>R</p>
+            <input id="slideR" type="range" min="1" max ="255" value="1" onchange="updateText(this.value)" step="2">
+            <span id="range">0</span>
+            <p>G</p>
+            <input id="slideG" type="range" min="1" max ="255" value="1" onchange="updateText2(this.value)" step="2">
+            <span id="range2">0</span>
+            <p>B</p>
+            <input id="slideB" type="range" min="1" max ="255" value="1" onchange="updateText3(this.value)" step="2">
+            <span id="range3">0</span>
+          </fieldset>
+        </div>
+        <div class="col-xs-6">
+          <h4>Ending Colour</h4>
+          <fieldset class="fieldsetCSS">
+            <p>R</p>
+            <input id="slideR2" type="range" min="1" max ="255" value="1" onchange="updateText4(this.value)" step="2">
+            <span id="range4">0</span>
+            <p>G</p>
+            <input id="slideG2" type="range" min="1" max ="255" value="1" onchange="updateText5(this.value)" step="2">
+            <span id="range5">0</span>
+            <p>B</p>
+            <input id="slideB2" type="range" min="1" max ="255" value="1" onchange="updateText6(this.value)" step="2">
+            <span id="range6">0</span>
+          </fieldset>
+        </div>
+        <div class="col-xs-12">
+          <br>
+          <canvas id="myCanvas" width="1000" height="300"></canvas>
+          <h4 class="text-center" id ="colour1"></h4>
+          <h4 class="text-center" id ="colour2"></h4>
+        </div>
+      </div>
+    </div>
+    <script>
+      window.onload = Default;
+      
+      var R = "0";
+      var G = "0";
+      var B = "0";
+      
+      var R2 = "0";
+      var G2 = "0";
+      var B2 = "0";
+      
+      
+      
+      function updateText(newValue){
+        document.getElementById("range").innerHTML=newValue;
+        document.getElementById("colour1").innerHTML='gradient.addColorStop(0,rgb(' + newValue + ',' + G + ',' + B + '))'
+        R = newValue; 
+        updateCol();
+      }
+      
+      function updateText2(newValue2){
+        document.getElementById("range2").innerHTML=newValue2;
+        document.getElementById("colour1").innerHTML='gradient.addColorStop(0,rgb(' + R + ',' + newValue2 + ',' + B + '))'
+        G = newValue2; 
+        updateCol();
+      }
+      
+      
+      function updateText3(newValue3){
+        document.getElementById("range3").innerHTML=newValue3;
+        document.getElementById("colour1").innerHTML='gradient.addColorStop(0,rgb(' + R + ',' + G + ',' + newValue3 + '))'
+        B = newValue3; 
+        updateCol();
+      }
+      
+      
+      function updateText4(newValue4){
+        
+        document.getElementById("range4").innerHTML=newValue4;
+        document.getElementById("colour2").innerHTML='gradient.addColorStop(1,rgb(' + newValue4 + ',' + G2 + ',' + B2 + '))'
+        R2 = newValue4; 
+        updateCol();
+        }
+      
+      
+      function updateText5(newValue5){
+        
+        document.getElementById("range5").innerHTML=newValue5;
+        document.getElementById("colour2").innerHTML='gradient.addColorStop(1,rgb(' + R2 + ',' + newValue5 + ',' + B2 + '))'
+        G2 = newValue5; 
+        updateCol();
+        }
+      
+      
+      
+       function updateText6(newValue6){
+        
+        document.getElementById("range6").innerHTML=newValue6;
+        document.getElementById("colour2").innerHTML='gradient.addColorStop(1,rgb(' + R2 + ',' + G2 + ',' + newValue6 + '))'
+        B2 = newValue6; 
+        updateCol();
+        }
+      
+      
+      function updateCol() {
+        
+      colval = 'rgb(' + R + ',' + G + ',' + B + ')';
+      colval2 = 'rgb(' + R2 + ',' + G2 + ',' + B2 + ')';
+      
+      var canvas = document.getElementById('myCanvas');
+      var ctx = canvas.getContext('2d');
+      ctx.rect(0, 0, canvas.width, canvas.height);
+      
+      var gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, colval);   
+      gradient.addColorStop(1, colval2);
+      ctx.fillStyle = gradient;
+      ctx.fill();
+      }
+      
+      function Default() {
+        colour = document.getElementById("colour1");
+        colour.innerHTML ='gradient.addColorStop(0,rgb(' + R + ',' + G + ',' + B + '))'
+      
+        colour = document.getElementById("colour2");
+        colour2.innerHTML ='gradient.addColorStop(1,rgb(' + R + ',' + G + ',' + B + '))'
+      
+        colval = 'rgb(' + R + ',' + G + ',' + B + ')';
+        colval2 = 'rgb(' + R2 + ',' + G2 + ',' + B2 + ')';
+      
+        var canvas = document.getElementById('myCanvas');
+        var ctx = canvas.getContext('2d');
+        ctx.rect(0, 0, canvas.width, canvas.height);
+      
+        var gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, colval);   
+        gradient.addColorStop(1, colval2);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+      }
+      
+    </script>
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script> 
+  </body>
+</html>

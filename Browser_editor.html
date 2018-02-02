@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Code Editor</title>
+  <script charset="utf-8" src="ace-builds-master/src/ace.js" type="text/javascript"></script>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/carousel.css" rel="stylesheet">
+</head>
+
+<body>
+ 
+    <!-- HTML editor 
+      ================================================== -->
+  <div class="col-md-4">
+    <br><br><div class="panel-group" id="accordion1">
+      <div class="panel panel-primary" id="panel1">
+        <div class="panel-heading">
+          <h4 class="panel-title"><a data-target="#collapseHTML" data-toggle=
+          "collapse" href="#collapseHTML">HTML</a></h4>
+        </div>
+
+        <div class="panel-collapse collapse in" id="collapseHTML">
+          <div class="panel-body">
+            <div id="editor"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- CSS editor 
+      ================================================== -->
+  <div class="col-md-4">
+    <br><br><div class="panel-group" id="accordion2">
+      <div class="panel panel-primary" id="panel2">
+        <div class="panel-heading">
+          <h4 class="panel-title"><a data-target="#collapseCSS" data-toggle=
+          "collapse" href="#collapseCSS">CSS</a></h4>
+        </div>
+
+        <div class="panel-collapse collapse in" id="collapseCSS">
+          <div class="panel-body">
+            <div id="editor2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- JavaScript editor 
+      ================================================== -->
+  <div class="col-md-4">
+    <br><br><div class="panel-group" id="accordion3">
+      <div class="panel panel-primary" id="panel3">
+        <div class="panel-heading">
+          <h4 class="panel-title"><a data-target="#collapseJS" data-toggle=
+          "collapse" href="#collapseJS">JavaScript</a></h4>
+        </div>
+
+        <div class="panel-collapse collapse in" id="collapseJS">
+          <div class="panel-body">
+            <div id="editor3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <br><button class="btn btn-info btn-responsive-quiz btn-editor pull-left" onclick="update()">Run</button> 
+    <button class="btn btn-info btn-responsive-quiz btn-editor pull-left" onclick="Clear()">Clear</button> 
+    <button class="btn btn-info btn-responsive-quiz btn-editor pull-right" onclick="setCode()">Set Code</button> 
+    <button class="btn btn-info btn-responsive-quiz btn-editor pull-left" data-target="#Modal1" data-toggle="modal" onclick="write_html()" type="button">Get
+    Text</button> 
+    
+    <!-- Iframe to display code 
+      ================================================== -->
+    <iframe height="400" id="frame" name="frame" width="2000"></iframe> 
+
+    <div class="modal fade" id="Modal1" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" data-dismiss="modal" type=
+            "button"><span>&times;</span></button>
+
+            <h3 class="modal-title" id="Modal1_title">Your Code</h3>
+          </div>
+
+   <!-- Code template 
+      ================================================== -->
+          <div class="modal-body">
+            <p>&lt;!DOCTYPE html&gt;</p>
+
+            <p>&lt;html&gt;</p>
+
+            <p>&lt;head&gt;</p>
+
+            <p id="code4"></p>
+
+            <p>&lt;&#47;head&gt;</p>
+
+            <p>&lt;style type='text/css&gt;</p>
+
+            <p id="code2"></p>
+
+            <p>&lt;&#47;style&gt;</p>
+
+            <p>&lt;script&gt;</p>
+
+            <p id="code3"></p>
+
+            <p>&lt;&#47;script&gt;</p>
+
+            <p>&lt;body&gt;</p>
+
+            <p id="code1"></p>
+
+            <p>&lt;&#47;body&gt;</p>
+
+            <p>&lt;&#47;html&gt;</p>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-default btn-responsive-next" data-dismiss=
+            "modal" type="button">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+  <script src="js/bootstrap.min.js"></script> 
+  <script src="js/editor.js"></script>
+</body>
+</html>

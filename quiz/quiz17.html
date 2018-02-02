@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      var answers = new Array(2);
+      answers[0] = "ctx.translate(20,20)";
+      answers[1] = "Nothing";
+      answers[2] = "ctx.rotate(10*Math.PI/180)";
+      answers[3] = "(0,0)";
+      
+      var totalQuestions = 4;
+      var totalChoices = 3;
+      
+      function getScore(form) {
+        var score = 0;
+        var buttonSelected;
+        for (i=0; i<totalQuestions; i++) { 
+          iterateChoices = i*totalChoices
+          for (y=0; y<totalChoices; y++) {
+            buttonSelected = form.elements[iterateChoices + y];
+            if (buttonSelected.checked && buttonSelected.value == answers[i]) {
+                score++;
+                break;
+            }
+          }
+        
+          document.getElementById("finalscore").innerHTML= "You got " + (score) + " out of " + (totalQuestions) + " questions correct!";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-md-offset-3">
+            <h2>Transformations Quiz</h2>
+            <form id="Quiz" name="Quiz">
+              <br><b>1.How would I move the origin of the canvas to the point (20,20)?</b>
+              <br><input name="q1" type="radio" value="ctx.translate(20,20)">ctx.translate(20,20)
+              <br><input name="q1" type="radio" value="ctx.transform(20,20)">ctx.transform(20,20)
+              <br><input name="q1" type="radio" value="ctx.origin(20,20)">ctx.origin(20,20)
+              <br><b>2.What is the effect of applying a scaling factor of (1,1) to a shape?</b>
+              <br><input name="q2" type="radio" value="Adds 1 pixel">Adds 1 pixel
+              <br><input name="q2" type="radio" value="Doubles">Doubles the size
+              <br><input name="q2" type="radio" value="Nothing">Nothing
+              <br><b>3.How would I rotate a shape by 10 degrees clockwise?</b>
+              <br><input name="q3" type="radio" value="ctx.rotate(10)">ctx.rotate(10)
+              <br><input name="q3" type="radio" value="ctx.rotate(10*Math.PI/180)">ctx.rotate(10*Math.PI/180)
+              <br><input name="q3" type="radio" value="ctx.rotate(10,10)">ctx.rotate(10,10)
+              <br><b>4.What is the default rotate origin?</b>
+              <br><input name="q4" type="radio" value="(0,0)">(0,0)
+              <br><input name="q4" type="radio" value="(0,1)">(0,1)
+              <br><input name="q4" type="radio" value="(1,1)">(1,1)
+              <br><br><input type = "button" class="btn btn-info btn-responsive-next" value = "Get Score" onClick="getScore(this.form)">
+              <br><br><input type="reset" value="Reset"  class="btn btn-info btn-responsive-next">
+            </form>
+            <br>
+            <p id="finalscore"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script>
+  </body>
+</html>

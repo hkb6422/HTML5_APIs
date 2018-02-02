@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drag and Drop Example</title>
+    <style>
+      #dropZone{
+      border: 3px solid black;
+      height: 300px;
+      width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <img src = "bridge.jpg" id = "image1" width = "200" height = "200">
+    <h3 id = "dropZone">Drop Element Here</h3>
+  </body>
+</html>

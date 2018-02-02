@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      var answers = new Array(2);
+      answers[0] = "An event listener will execute a specified function if a specified event occurs on a target element";
+      answers[1] = "The element in which we want to add an event listener";
+      answers[2] = "The first parameter is the type of event";
+      answers[3] = "The function that will be called when the event occurs";
+      
+      var totalQuestions = 4;
+      var totalChoices = 3;
+      
+      function getScore(form) {
+        var score = 0;
+        var buttonSelected;
+        for (i=0; i<totalQuestions; i++) { 
+          iterateChoices = i*totalChoices
+          for (y=0; y<totalChoices; y++) {
+            buttonSelected = form.elements[iterateChoices + y];
+            if (buttonSelected.checked && buttonSelected.value == answers[i]) {
+                score++;
+                break;
+            }
+          }
+        
+          document.getElementById("finalscore").innerHTML= "You got " + (score) + " out of " + (totalQuestions) + " questions correct!";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-md-offset-3">
+            <h2>Event Listeners Quiz</h2>
+            <form id="Quiz" name="Quiz">
+              <br><b>1.What is an event listener?</b>
+              <br><input name="q1" type="radio" value="An event listener will execute a specified function if a specified event occurs on a target element">An event listener will execute a specified function if a specified event occurs on a target element
+              <br><input name="q1" type="radio" value="An event listener will listen and count for specific events to be called">An event listener will listen and count for specific events to be called
+              <br><input name="q1" type="radio" value="An event listener will log if an event specified is called">An event listener will log if an event specified is called
+              <br><b>2.What is the target in the target.addEventListener call?</b>
+              <br><input name="q2" type="radio" value="The element in which we want to add an event listener">The element in which we want to add an event listener
+              <br><input name="q2" type="radio" value="The name of the event">The name of the event
+              <br><input name="q2" type="radio" value="The type of event">The type of event
+              <br><b>3.What is the first parameter in the addEventListener call?</b>
+              <br><input name="q3" type="radio" value="The first parameter is the type of event">The first parameter is the type of event
+              <br><input name="q3" type="radio" value="The function we want to execute if the event occurs">The function we want to execute if the event occurs
+              <br><input name="q3" type="radio" value="The name of the event">The name of the event
+              <br><b>4.What is the second parameter in the addEventListener call?</b>
+              <br><input name="q4" type="radio" value="The function that will be called when the event occurs">The function that will be called when the event occurs
+              <br><input name="q4" type="radio" value="The name of the event">The name of the event
+              <br><input name="q4" type="radio" value="The event type">The event type
+              <br><br><input type = "button" class="btn btn-info btn-responsive-next" value = "Get Score" onClick="getScore(this.form)">
+              <br><br><input type="reset" value="Reset"  class="btn btn-info btn-responsive-next">
+            </form>
+            <br>
+            <p id="finalscore"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script>
+  </body>
+</html>

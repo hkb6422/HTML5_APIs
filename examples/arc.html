@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Arc Example</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+     <link href="../css/carousel.css" rel="stylesheet">
+
+  <script>
+
+  function drawArc() {
+    var canvas = document.getElementById("myCanvas"); 
+    var context = canvas.getContext("2d");
+  
+    var x = document.getElementById("x").value;
+    var y = document.getElementById("y").value;
+    var radius = document.getElementById("radius").value;
+    var startangle = document.getElementById("startangle").value;
+    var endangle = document.getElementById("endangle").value;
+  
+    if(document.getElementById("clockwise").value == "true"){
+    clockwise = true; 
+  }
+  
+    else  {
+    clockwise = false;
+  }
+  
+    context.beginPath();
+    context.lineWidth="4";
+    context.strokeStyle = "blue";
+    context.arc(x, y, radius, startangle, endangle, clockwise)
+    context.stroke();
+  }
+
+  function erase() {
+  var canvas = document.getElementById("myCanvas"); 
+  var context = canvas.getContext("2d");
+  context.clearRect(0,0, canvas.width, canvas.height); 
+  }
+
+</script>
+</head>
+
+<body>
+
+<p class="text-center"><canvas id="myCanvas" width="400" height="200">
+ Sorry your browser does not support the Canvas element</canvas></p> 
+
+<h2>Context.arc( 
+<input type="text" id="x" value="x" size="2" />,  
+<input type="text" id="y" value="y" size="2" />, 
+<input type="text" id="radius" value="radius" size="2" />, 
+<input type="text" id="startangle" value="startAngle" size="2" />, 
+<input type="text" id="endangle" value="endAngle" size="2" />, 
+<input type="text" id="clockwise" name="clock" value="direction"  size="5"/>)
+</h2>
+
+ <input type="button" class="btn btn-info btn-responsive-next" value="Clear" onClick="erase()" />
+ <input type="submit" class="btn btn-info btn-responsive-next" value="Draw"  onclick="erase();drawArc()" />
+
+<script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+<script src="../js/bootstrap.min.js"></script> 
+
+</body>
+</html>
+
+
+

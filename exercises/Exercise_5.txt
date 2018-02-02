@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geolocation Example</title>
+    <script>
+      var watchId = null;
+      
+      var options = {
+           enableHighAccuracy:true
+      };
+      
+      function getLocation(){
+      if(navigator.geolocation){
+      watchId =navigator.geolocation.watchPosition(successCallBack,errorCallBack,options);
+      }
+      else {
+      alert("Geolocation is not supported by this browser");
+        }
+      }
+      
+       
+      function successCallBack(position) {
+
+      var c = document.getElementById("location");
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+      var accuracy = position.coords.accuracy;
+      
+      c.innerHTML = "Latitude: " + latitude +   
+      "<br> Longitude: "  + longitude +   
+      "<br> Accuracy: " + accuracy;
+             
+      }
+      
+       function errorCallBack(error){
+      alert('Error(' + error.code +'): ' + error.message);
+      }
+      
+      
+       function stopTracking() {
+                 if (watchId !== null){
+                     navigator.geolocation.clearWatch(watchId);
+                     watchId = null;
+                     alert("We have stopped monitoring your location");
+                 }
+             }  
+    </script>
+  </head>
+  <body>
+    <h3> Geolocation Example </h3>
+    <button onclick="getLocation()">Start Tracking</button>
+    <button onclick="stopTracking()">Stop Tracking</button>
+    <p id = "location"></p>
+  </body>
+</html>

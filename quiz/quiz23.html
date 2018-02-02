@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      var answers = new Array(2);
+      answers[0] = "It prevents default browser behaivour";
+      answers[1] = "getData";
+      answers[2] = "getData(dataFormat)";
+      answers[3] = "Data format of the element stored within the object";
+      
+      var totalQuestions = 4;
+      var totalChoices = 3;
+      
+      function getScore(form) {
+        var score = 0;
+        var buttonSelected;
+        for (i=0; i<totalQuestions; i++) { 
+          iterateChoices = i*totalChoices
+          for (y=0; y<totalChoices; y++) {
+            buttonSelected = form.elements[iterateChoices + y];
+            if (buttonSelected.checked && buttonSelected.value == answers[i]) {
+                score++;
+                break;
+            }
+          }
+        
+          document.getElementById("finalscore").innerHTML= "You got " + (score) + " out of " + (totalQuestions) + " questions correct!";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-md-offset-3">
+            <h2>Drop Functions Quiz</h2>
+            <form id="Quiz" name="Quiz">
+              <br><b>1.What is the preventDefault() method and why is it used?</b>
+              <br><input name="q1" type="radio" value="It prevents default browser behaivour">It prevents default browser behaivour
+              <br><input name="q1" type="radio" value="It prevents the browser from providing errors messages ">It prevents the browser from providing errors messages
+              <br><input name="q1" type="radio" value="It prevents the browser from caching data">It prevents the browser from caching data
+              <br><b>2.What method is used to access what is stored in the DataTransferObject?</b>
+              <br><input name="q2" type="radio" value="getData">getData
+              <br><input name="q2" type="radio" value="setData">setData
+              <br><input name="q2" type="radio" value="showData">showData
+              <br><b>3.What is the correct parameter or parameters for calling the getData method?</b>
+              <br><input name="q3" type="radio" value="getData(dataFormat)">getData(dataFormat)
+              <br><input name="q3" type="radio" value="getData(dataFormat, name)">getData(dataFormat, name)
+              <br><input name="q3" type="radio" value="getData(dataFormat, element, name)">getData(dataFormat, element, name)
+              <br><b>4.What is the data that needs to be passed to the getData method?</b>
+              <br><input name="q4" type="radio" value="Data format of the element stored within the object">Data format of the element stored within the object
+              <br><input name="q4" type="radio" value="Name of the element stored within the object">Name of the element stored within the object
+              <br><input name="q4" type="radio" value="Position of the element stored within the object">Position of the element stored within the object
+              <br><br><input type = "button" class="btn btn-info btn-responsive-next" value = "Get Score" onClick="getScore(this.form)">
+              <br><br><input type="reset" value="Reset"  class="btn btn-info btn-responsive-next">
+            </form>
+            <br>
+            <p id="finalscore"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script>
+  </body>
+</html>

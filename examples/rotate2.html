@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Rotate Example</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      window.onload = draw()
+      
+      function draw(){
+      var c = document.getElementById("myCanvas");
+      var ctx = c.getContext("2d");
+      ctx.fillRect(100, 50, 50, 50);
+      }
+      
+      function rotate(){
+       var c = document.getElementById("myCanvas");
+       var ctx = c.getContext("2d");
+       ctx.clearRect ( 0 , 0 , myCanvas.width, myCanvas.height);
+       var input = document.getElementById("degrees").value;
+       ctx.rotate(input * Math.PI / 180);
+       ctx.fillRect(100, 50, 50, 50);
+      }
+      
+      function reset(){
+      	window.location.reload();
+      }
+      
+    </script>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+    <h2>ctx.rotate( 
+      <input type="text" id="degrees" value="degrees" size="2"/>* Math.PI / 180);
+    </h2>
+    <input type="button" class="btn btn-info btn-responsive-next" value="Rotate" onClick="rotate()" />
+    <input type="button" class="btn btn-info btn-responsive-next" value="Reset" onClick="reset()" />
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script> 
+  </body>
+</html>

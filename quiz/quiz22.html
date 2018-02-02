@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      var answers = new Array(2);
+      answers[0] = "An object that will hold data throughout the drag and drop process";
+      answers[1] = "setData(dataFormat,data)";
+      answers[2] = "The format of the data";
+      answers[3] = "The data which we want to add";
+      
+      var totalQuestions = 4;
+      var totalChoices = 3;
+      
+      function getScore(form) {
+        var score = 0;
+        var buttonSelected;
+        for (i=0; i<totalQuestions; i++) { 
+          iterateChoices = i*totalChoices
+          for (y=0; y<totalChoices; y++) {
+            buttonSelected = form.elements[iterateChoices + y];
+            if (buttonSelected.checked && buttonSelected.value == answers[i]) {
+                score++;
+                break;
+            }
+          }
+        
+          document.getElementById("finalscore").innerHTML= "You got " + (score) + " out of " + (totalQuestions) + " questions correct!";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-md-offset-3">
+            <h2>Drag Functions Quiz</h2>
+            <form id="Quiz" name="Quiz">
+              <br><b>1.What is the DataTransfer object?</b>
+              <br><input name="q1" type="radio" value="An object that will hold data throughout the drag and drop process">An object that will hold data throughout the drag and drop process
+              <br><input name="q1" type="radio" value="An object that can be invoked to count how many times each event has been called">An object that can be invoked to count how many times each event has been called
+              <br><input name="q1" type="radio" value="An object that will delete all information about the drag and drop process when invoked">An object that will delete all information about the drag and drop process when invoked
+              <br><b>2.What are the correct parameters for the setData method add data to the DataTransfer object?</b>
+              <br><input name="q2" type="radio" value="setData(dataFormat,data)">setData(dataFormat,data)
+              <br><input name="q2" type="radio" value="setData(data)">setData(data)
+              <br><input name="q2" type="radio" value="setData(dataFormat)">setData(dataFormat)
+              <br><b>3.What type of data is the first parameter for the setData method?</b>
+              <br><input name="q3" type="radio" value="The format of the data">The format of the data
+              <br><input name="q3" type="radio" value="The name of the element">The name of the element
+              <br><input name="q3" type="radio" value="The name of the event handler">The name of the event handler
+              <br><b>4.What type of data is the second parameter for the setData method?</b>
+              <br><input name="q4" type="radio" value="The data which we want to add">The data which we want to add
+              <br><input name="q4" type="radio" value="The format of the data">The format of the data
+              <br><input name="q4" type="radio" value="The name of the event handler">The name of the event handler
+              <br><br><input type = "button" class="btn btn-info btn-responsive-next" value = "Get Score" onClick="getScore(this.form)">
+              <br><br><input type="reset" value="Reset"  class="btn btn-info btn-responsive-next">
+            </form>
+            <br>
+            <p id="finalscore"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script>
+  </body>
+</html>

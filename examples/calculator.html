@@ -1,0 +1,40 @@
+  <!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<head>
+  <title>Radians and degrees calculator</title>
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/carousel.css" rel="stylesheet">
+</head>
+<script>
+
+function convert() {
+	if (form1.degrees.value == "" || form1.degrees.value == "")
+	{
+		var input = document.getElementById("radians").value;
+		var degrees = input*57.2957795;
+		document.getElementById("degrees").value = Math.round(degrees);
+	}
+
+
+	if (form1.radians.value == "" || form1.radians.value == "")
+	{
+		var input2 = document.getElementById("degrees").value;
+		var radians = input2 * (Math.PI / 180);
+		document.getElementById("radians").value = Number(Math.round(radians+'e2')+'e-2');
+	}
+}
+
+</script>
+<body>
+
+<form name = "form1">
+<h4>Radians</h4><input type="text" id="radians" value="" size="20" />  
+<br><h4>Degrees</h4><input type="text" id="degrees" value="" size="20" />
+<br><br><input type="button" button type="button" class="btn btn-info btn-responsive-next" value="Convert" onClick="convert()" />
+</form>
+
+<script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+<script src="../js/bootstrap.min.js"></script> 
+</body>
+</html>  

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Getting Started" name="description">
+  <meta content="Harleen Buray" name="author">
+
+  <title>Getting Started</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/carousel.css" rel="stylesheet">
+
+</head>
+
+<!-- Logo
+================================================== -->
+<body>
+  <div class="hidden-xs logo">
+     <a href="index.html"><img class="img-responsive center-block" height="200" src=
+    "images/logo.jpg" width="800" alt="logo"></a>
+  </div>
+
+  <div class="visible-xs logo">
+   <img class="img-responsive center-block" height="100" src=
+    "images/logo_small.jpg" width="400" alt="logo">
+  </div>
+
+  <!-- Navbar
+================================================== -->
+
+  <div class="navbar-wrapper">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" data-target="#navbar"
+          data-toggle="collapse" type="button"><span class="sr-only">Toggle
+          navigation</span> <span class="icon-bar"></span> <span class=
+          "icon-bar"></span> <span class="icon-bar"></span></button> <a class=
+          "navbar-brand" href="#">Menu</a>
+        </div>
+
+        <div class="navbar-collapse collapse" id="navbar">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+
+            <li class="active">
+              <a href="GettingStarted.html">Getting Started</a>
+            </li>
+
+            <li>
+               <a href="Geolocation.html">Geolocation</a>
+            </li>
+
+            <li>
+              <a href="DragandDrop.html">Drag and Drop</a>
+            </li>
+
+            <li>
+              <a href="Canvas.html">Canvas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+    <!-- Welcome area
+================================================== -->
+  <div class="welcome">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ">
+          <h2>Getting Started</h2>
+          <p>The following section aims to provide you with all of the information needed for you to begin learning about the HTML5 APIs offered on this website. Throughout this section you will understand how the site is structured, the various features that are offered and what pre-existing knowledge is needed.</p>
+        </div>
+        <div class="col-md-4 hidden-xs hidden-sm">
+        <img class="img-responsive img-rounded center-block"
+          height="200" src="images/tick.png" style="PADDING-TOP: 10px" width="200" alt="tick">
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Tabs
+================================================== -->
+  <br>
+
+  <ul class="nav nav-tabs nav-justified">
+    <li>
+      <a data-toggle="tab" href="#tab_a">Prerequisites</a>
+    </li>
+
+    <li>
+      <a data-toggle="tab" href="#tab_b">Structure</a>
+    </li>
+
+    <li>
+      <a data-toggle="tab" href="#tab_c">Browser Editor</a>
+    </li>
+  </ul>
+
+
+  <!-- Main Content
+================================================== -->
+  <div class="container marketing">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tab-content">
+
+          <div class="tab-pane active" id="tab_a">
+          <h3>Prerequisites</h3>
+          <p>In order learn about the HTML5 APIs and complete the exercises available throughout the tutorial there are a number of prerequisites shown below. Basic knowledge of the languages listed below is expected;</p>
+          <table class="table table-hover table-bordered ">
+          <thead>
+            <tr class="info">
+                <th>Language</th>
+                <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><h4>HTML5</h4></td>
+            <td>HTML5 is the latest revision of the HTML standard which is used to structure content on the web.
+            As the API's introduced in this website are part of the new HTML5 standard, knowledge of HTML5 is necessary in order to access and use the APIs.</td>
+          </tr>
+          <tr>
+            <td><h4>CSS</h4></td>
+            <td>CSS is a language used to apply style to elements within the HTML mark-up.
+            The language is not explored in the exercises as the APIs are not reliant on this language. However it is recommended to utilise CSS to make your creations look more personalised</td>
+          </tr>
+          <tr>
+            <td><h4>JavaScript</h4></td>
+            <td>JavaScript is a language commonly used to program the behaviour of web pages. The HTML5 API interfaces are exposed through HTML5 and JavaScript therefore JavaScript is required in order to access the functionalities that they offer</td>
+          </tr>
+          </tbody>
+          </table>
+        </div>
+        <div class="tab-pane fade" id="tab_b">
+           <h3>Structure</h3>
+           <p>Each page in the website is dedicated to a particular API. This page is split further into different topics which are accessible via the module tabs at the top of the page. The tabs are presented in sequential order therefore you view each page consecutively. The structure of each topic page is described below;</p>
+          <img src="images/tabs.png" class="img-responsive center-block" width="550" height="300" alt="browser editor window"><br>
+
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-md-6">
+                  <h4>Quiz</h4>
+                  <p>Each page includes a quiz which is accessible by clicking the Quiz button. The number of questions vary from topic to topic. For each question there are a variety of answers which are each represented by a radio button. Each question will therefore have only one answer. The quiz essentially acts as a mechanism for you to test your knowledge before moving on and applying the knowledge learnt in completing any exercises.</p>
+                  </div>
+                  <div class="col-md-6">
+                    <br><img src="images/quiz.png"  class="img-responsive center-block" alt="quiz" width="550" height="500">
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <h4>Exercise</h4>
+                  <p>Each topic will also include an exercise for you to complete which will incorporate all of the knowledge learnt from the topics read so far. The exercises allow you to gain a first-hand experience of accessing and using the APIs. If you are looking for some help or guidance on how to complete the exercise you are able to retrieve some hints by clicking the See Hint button. The Edit Code button provides an in browser editor where you are able to complete the exercise given. This is explained in the next section.</p>
+                </div>
+                <div class="col-md-6">
+                  <br><img src="images/exercise.png" alt="exercise" class="img-responsive center-block" width="550" height="300">
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                    <h4>Progress Bar</h4>
+                    <p>A progress bar is available to help you keep track of which exercises you have completed. Each different exercise has been assigned a score of either 10%, 15% or 20% depending on its complexity. Simply press the complete button to signify you have completed the exercise and the progress bar will update and present the percentage completed. Click the undo button to cancel any progress submitted for an exercise and the progress bar will reflect this.</p>
+                  </div>
+                  <div class="col-md-6">
+                  <br><img src="images/progress.png" alt="progress bar" class="img-responsive center-block" width="400" height="300">
+                  </div>
+                </div>
+              </div>
+          </div>
+         <div class="tab-pane fade" id="tab_c">
+            <h3>Browser Editor</h3>
+            <p>Within the website is a browser editor which allows you to write and run your code within the website. The browser editor has three panels which are dedicated to a separate language. There are three languages which are available to code in - HTML, JavaScript and CSS. The panels are collapsible therefore if you want to close any of the panels just simply click on the title or header of the panel. The editors provides features such as syntax highlighting, auto-completion and also real time validation</p> 
+           <img src="images/editor_windows.png" alt="editor windows" class="img-responsive center-block" width="800" height="300">
+            <br><p>Please note that when using the HTML editor all tags including the HTML tags can be included within your code. However within the CSS editor you should not enter the style tags and within the JavaScript editor the script tags should not be entered.</p>
+            <br><br><p>There are many controls which have been implemented within the browser editor window. Each of the controls are described below;</p>
+            <h3>Controls</h3>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                      <h4>Run</h4>
+                      <p>The run button will execute the code currently typed within the editors and display the results within an iframe. Each time you click the run button the code within the editors is also saved to session storage. </p>
+                      <br><img src="images/run_iframe.png" alt="code displayed within iframe" class="img-responsive center-block" width="400" height="200">
+                    </div>
+                    <div class="col-md-6">
+                      <h4>Clear</h4>
+                      <p>The clear button will clear the editors of any code that is currently written within them and clear the iframe of any content that is already displayed. Also when the clear button is pressed all data saved within session storage is erased therefore you will not be able to retrieve any code that was previously written if this button is clicked. </p>
+                      <br><img src="images/clear.png" alt="clear editor windows" class="img-responsive center-block" width="400" height="300">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h4>Get Text</h4>
+                      <p>The Get Text control will open a modal window with your code added to the template below. Your JavaScript code will appear in between the script tags and CSS code will be in between the style tags. Please note that you must include both the head and body tags in your HTML code in order to display code in between these tags in the template.</p>
+                      <br><img src="images/code_template.png" alt="code template" class="img-responsive center-block" width="400" height="300">
+                    </div>
+                    <div class="col-md-6">
+                      <h4>Set Code</h4>
+                      <p>Each time you navigate to a different tab and reopen the browser editor all code written prior to this is cleared from the editors. This control allows you to populate the editors with the code you had wrote in each of the editors before it was cleared. Please note that your code is only available within the current browser session.</p>
+                      <img src="images/editor_windows.png" alt="editor windows" class="img-responsive center-block" width="800" height="300">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                      <h4>See Answer</h4>
+                      <p>Finally within the browser editor window is a button called See Answer which presents the answer to the relevant exercise. The answers are provided in two formats a video and text. The video is a screen cast which demonstrates the answer to the exercise using the browser editor. The video includes annotations to help you understand the coding process. The code which is created in the screen cast to answer the exercise is presented next to the video.</p>
+                      <br><img src="images/answer.png" alt="video and text answer" class="img-responsive center-block" width="800" height="300">
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <div class = "panel panel-default">
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2015 Harleen Buray</p>
+      </footer>
+  </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+      <script src="js/bootstrap.min.js"></script> 
+</body>
+</html> 

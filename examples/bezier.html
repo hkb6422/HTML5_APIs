@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bezier Curve Example</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+<script>
+
+//draw initial curve
+window.onload = draw;
+
+//variables to control the curve
+var cp1x = 20;   
+var cp1y = 100; 
+var cp2x = 290; 
+var cp2y = 150; 
+
+
+function draw() {
+  var canvas = document.getElementById('myCanvas'); 
+  var ctx = canvas.getContext('2d');
+
+    //fill canvas
+    ctx.beginPath();
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0,0,400,200);
+    
+    //default curve
+    ctx.beginPath();
+    ctx.moveTo(150,10); 
+    ctx.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,150,190);
+    ctx.lineWidth="4";
+    ctx.stroke();
+  
+    //control points
+    ctx.beginPath();
+    ctx.fillStyle = "#FF0066"; 
+    ctx.arc(cp1x,cp1y,6,0,Math.PI*2,false);
+    ctx.fill();
+    ctx.moveTo(cp2x,cp2y);
+    ctx.beginPath();
+    ctx.fillStyle = "#9900CC"; 
+    ctx.arc(cp2x,cp2y,6,0,Math.PI*2,false);
+    ctx.fill();
+  }  
+
+
+  function controlCp1() {
+    cp1x = Math.floor(Math.random() * 290);
+    cp1y = Math.floor(Math.random() * 190);
+    draw(); 
+  }
+
+  function controlCp2 () {
+    cp2x = Math.floor(Math.random() * 290);
+    cp2y = Math.floor(Math.random() * 190);
+    draw();
+  }
+
+  function Reset() {
+    cp1x = 20;
+    cp1y = 100;
+    cp2x = 290;
+    cp2y = 150;
+    draw();
+  }
+
+  function showCode() {
+    code = document.getElementById("code");
+    code.innerHTML = "ctx.bezierCurveTo(" + cp1x + "," + cp1y + "," +  cp2x + "," + cp2y + "," + "150,190)";
+  }
+
+</script>
+
+</head>
+
+<body>
+<div class="btn-group btn-group-justified"  >
+  <div class="btn-group">
+      <a class="btn btn-default btn-responsive-quiz" role="button" onclick="controlCp1(); showCode()">Rest A</a>
+  </div>
+  <div class="btn-group">
+    <a class="btn btn-default btn-responsive-quiz" role="button" onclick="controlCp2(); showCode()" >Reset B</a>
+  </div>
+  <div class="btn-group">
+    <a class="btn btn-default btn-responsive-quiz" role="button" onclick="Reset(); showCode()">Default</a>
+  </div>
+</div>
+
+<br><p class="text-center"> <canvas id="myCanvas" width="400" height="200"></canvas></p>
+<h2 class="text-center" id ="code">ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)</h2>
+
+<script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+<script src="../js/bootstrap.min.js"></script> 
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz</title>
+    <meta charset="utf-8">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      //array to hold answers to questionnaire
+      var answers = new Array(3);
+      answers[0] = "new google.maps.Map";
+      answers[1] = "HTML element which the map is drawn inside and  an options object";
+      answers[2] = "selected option properties initialized with values";
+      answers[3] = "for convenience so we don't have to state an object literal each time we use the latitude and longitude points";
+      
+      var totalQuestions = 4;
+      var totalChoices = 3;
+      
+      function getScore(form) {
+        var score = 0;
+        var buttonSelected;
+        for (i=0; i<totalQuestions; i++) { 
+          iterateChoices = i*totalChoices
+          for (y=0; y<totalChoices; y++) {
+            buttonSelected = form.elements[iterateChoices + y];
+            if (buttonSelected.checked && buttonSelected.value == answers[i]) {
+                score++;
+                break;
+            }
+          }
+        
+          document.getElementById("finalscore").innerHTML= "You got " + (score) + " out of " + (totalQuestions) + " questions correct!";
+        }
+      
+      }
+      	
+    </script>
+  </head>
+  <body>
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-md-offset-3">
+            <h2>Google Maps Basics</h2>
+            <form name="Quiz">
+              <br><b>1.A new map object is created using which of the following Map constructors? </b>
+              <br><input type="radio" name="q1" value="new google.maps.Map">new google.maps.Map
+              <br><input type="radio" name="q1" value="new.google.Map">new.google.Map
+              <br><input type="radio" name="q1" value="new.map.Maps">new.map.Maps
+              <br><b>2.What parameters are required to create the Map object?</b>
+              <br><input type="radio" name="q2" value="HTML element which the map is drawn inside and  an options object">HTML element which the map is drawn inside and  an options object
+              <br><input type="radio" name="q2" value="positon object and an options object">positon object and an options object
+              <br><input type="radio" name="q2" value="just an options object">just an options object
+              <br><b>3.What does the options object need to include to customize the location information retrieved?</b>
+              <br><input type="radio" name="q3" value="selected option properties initialized with values">selected option properties initialized with values
+              <br><input type="radio" name="q3" value="the selected options">the selected options
+              <br><input type="radio" name="q3" value="HTML element to apply options to">HTML element to apply options to
+              <br><b>4.Why is a LatLng object created and utilised?</b>
+              <br><input type="radio" name="q4" value="for convenience so we don't have to state an object literal each time we use the latitude and longitude points">for convenience so we don't have to state an object literal each time we use the latitude and longitude points 
+              <br><input type="radio" name="q4" value="creating a LatLng object allows us to skip accessing the position object for location information">creating a LatLng object allows us to skip accessing the position object for location information
+              <br><input type="radio" name="q4" value="creating a LatLng object means we can skip creating a Map object">creating a LatLng object means we can skip creating a Map object
+              <br><br><input type = "button" class="btn btn-info btn-responsive-next" value = "Get Score" onClick="getScore(this.form)">
+              <br><br><input type="reset" value="Reset" class="btn btn-info btn-responsive-next">
+            </form>
+            <br>
+            <p id = "finalscore"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script> 
+  </body>
+</html>

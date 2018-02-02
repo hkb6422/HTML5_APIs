@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="Drag and Drop API Tutorial" name="description">
+    <meta content="Harleen Buray" name="author">
+    <title>Drag and Drop</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/carousel.css" rel="stylesheet">
+  </head>
+  <!-- Logo
+    ================================================== -->
+  <body>
+    <div class="hidden-xs logo">
+      <a href="index.html"><img class="img-responsive center-block" height="200" src=
+        "images/logo.jpg" alt = "logo" width="800">
+    </div>
+    </a>
+    <div class="visible-xs logo">
+      <a href="index.html"><img class="img-responsive center-block" height="100" src=
+        "images/logo_small.jpg" alt ="logo" width="400"></a>
+    </div>
+    <!-- Navbar
+      ================================================== -->
+    <div class="navbar-wrapper">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button class="navbar-toggle collapsed" data-target="#navbar"
+              data-toggle="collapse" type="button"><span class="sr-only">Toggle
+            navigation</span> <span class="icon-bar"></span> <span class=
+              "icon-bar"></span> <span class="icon-bar"></span></button> <a class=
+              "navbar-brand" href="#">Menu</a>
+          </div>
+          <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav">
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li>
+                <a href="GettingStarted.html">Getting Started</a>
+              </li>
+              <li>
+                <a href="Geolocation.html">Geolocation</a>
+              </li>
+              <li class="active">
+                <a href="DragandDrop.html">Drag and Drop</a>
+              </li>
+              <li>
+                <a href="Canvas.html">Canvas</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- Welcome content
+      ================================================== -->
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 ">
+            <h2>Drag and Drop</h2>
+            <p>The drag and drop API is a powerful interface that makes it easier to copy, reorder and delete items using mouse clicks. This allows users to 
+              click and hold down a mouse button over an element and drag it to another location. When the mouse is released this will cause the element to 
+              be dropped within that location.
+              <br><br>Before the drag and drop API the functionality of drag and drop was achieved using complex JavaScript programming or with other frameworks 
+              such as jQuery. The API now brings native support of drag and drop to the browser making it much easier to code
+            </p>
+          </div>
+          <div class="col-md-4 hidden-xs hidden-sm">
+            <img class="img-responsive img-rounded center-block"
+              height="200" src="images/drdp_logo.png" alt="drag and drop logo" style="PADDING-TOP: 10px"
+              width="250">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Tabs
+      ================================================== -->
+    <br>
+    <ul class="nav nav-tabs nav-justified">
+      <li>
+        <a data-toggle="tab" href="#tab_a">Drag and Drop element</a>
+      </li>
+      <li>
+        <a data-toggle="tab" href="#tab_b">Events</a>
+      </li>
+      <li>
+        <a data-toggle="tab" href="#tab_e">Event Listeners</a>
+      </li>
+      <li>
+        <a data-toggle="tab" href="#tab_c">Drag functions</a>
+      </li>
+      <li>
+        <a data-toggle="tab" href="#tab_d">Drop functions</a>
+      </li>
+    </ul>
+    <!-- Progress Bar 
+      ================================================== -->
+    <div id="progress">
+      <br>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped active" style="width:0%;">
+          <span id="percentage">0%</span>
+        </div>
+      </div>
+    </div>
+    <!-- Methods Content
+      ================================================== -->
+    <div class="container marketing">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab_a">
+              <h3>Drag and drop element</h3>
+              <h4>Create a draggable element and drop target</h4>
+              <p>Before looking at the event handlers within the drag and drop API, we firstly need to create an element that can be dragged and an area that the element can be dragged into. This is done in two simple steps;
+                <br><br>To make an element draggable the <b>draggable="true" attribute</b> is added to your content that is going to be dragged. In any DOM-compliant browser, a draggable element requires a "draggable" attribute which is set to "true" to enable this operation. By default images and link elements are draggable therefore no additional coding is needed for these elements.
+                <br><br>To create a drop area this is simply done by creating a div element that will act as a drop area.
+                The height and width of the div needs to be specified and it is also beneficial to add a border around the div to make it more visible.
+              </p>
+              <img src="images/drdp_element.png"  class="img-responsive center-block" alt ="drag element and drop zone code" width="800" height="600">
+              <button class="btn btn-responsive-next btn-success center-block" id="quiz1" data-target=
+                "#Quiz1" data-toggle="modal" type="button">Quiz<span class="glyphicon glyphicon-question-sign" ></span>
+              </button>
+              <div class="modal fade " id="Quiz1" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button class="close" data-dismiss="modal" type=
+                        "button"><span>&times;</span></button>
+                      <h3 class="modal-title" id="Quiz1_title">Quiz</h3>
+                    </div>
+                    <div class="modal-body">
+                      <iframe height="800" src="quiz/quiz19.html"
+                        width="2000"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-default btn-responsive-next"
+                        data-dismiss="modal" type="button">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="complete1"
+                onclick="Progress20(this.id)" >Complete <span class="glyphicon glyphicon-ok" ></span></button>
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="undo1" onclick="Undo20(this.id)">Undo <span class="glyphicon glyphicon-remove-circle" ></span></button>
+              <button class="btn btn-info btn-responsive-next" data-target=
+                "#exercise1" data-toggle="collapse" type=
+                "button">Exercise</button>
+              <div class="collapse" id="exercise1">
+                <p><b>Create an HTML file with a draggable image and a drop zone</b>
+                  <br><br>The drop zone must;
+                  <br><br>1)Include a border to make it visible
+                  <br>2)The height must be 300 pixels and width must be 200 pixels
+                </p>
+                <div class="hint">
+                  <button class="btn btn-default btn-responsive-next"
+                    data-target="#hint1" data-toggle="collapse" type="button">See
+                  hint</button>
+                  <div class="collapse" id="hint1">
+                    <br>
+                    <p>The drop zone is simply a div element which is assigned an id
+                      <br> To include an image you need to include it's source path
+                    </p>
+                  </div>
+                  <br><br><button class="btn btn-info btn-responsive-next" data-target=
+                    "#Modal1" data-toggle="modal" type="button">Edit
+                  Code</button> 
+                  <div class="modal fade" id=
+                    "Modal1" tabindex="-1">
+                    <div class="modal-dialog ">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal" type=
+                            "button"><span>&times;</span></button>
+                          <h3 class="modal-title" id="Exercise1_edit">Edit code</h3>
+                        </div>
+                        <div class="modal-body">
+                          <iframe src="Browser_editor.html" width="2000" height= "950"></iframe>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-info btn-responsive-next" data-target="#ModalA" data-toggle="modal" type="button">See Answer</button> 
+                          <button class="btn btn-default btn-responsive-next" data-dismiss="modal" type="button">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id=
+                    "ModalA" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal" type=
+                            "button"><span>&times;</span></button>
+                          <h3 class="modal-title" id="Exercise1_answer">Exercise 1
+                            Answer
+                          </h3>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-md-6" ><iframe width = "600" height ="400" src="exercises/drdp_1.txt"></iframe></div>
+                            <div>
+                              <div class = "row">
+                                <div class="col-md-6 embed-responsive embed-responsive-16by9">
+                                  <video width="600" height="440" controls>
+                                    <source src="exercises/drdp1.mp4" type="video/mp4">
+                                    <source src="exercises/drdp1.ogv" type="video/ogg">
+                                    <source src="exercises/drdp1.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                  </video>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-default btn-responsive-next"
+                            data-dismiss="modal" type="button">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="tab_b">
+              <h3>Events</h3>
+              <p>There are a number of events that are fired during the various stages of the drag and drop operation. Take a look at the table below which details each different event with a detailed description of the event</p>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <img src="images/drdp_events.png" alt ="drag and drop events"  class="img-responsive center-block" width="550" height="300">
+                  </div>
+                  <div class="col-md-6">
+                    <img src="images/drdp_flow.png" alt ="drag and drop events flow diagram" class="img-responsive center-block" width="550" height="300">
+                    <p>The event handlers have a natural order within the drag and drop operation therefore can be split into two groups - one where the event handlers apply to the draggable element and another where the event handlers apply to the drop zone. Take a look at the flow diagram above to see the order of events that occur.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h4>Example</h4>
+                    <p>Use the example below to see the drag and drop operation of an image. The numbers to the left will show you how many times each of the events are called during the drag and drop operation. Once the image has been dropped click the reset button to restart the operation again.
+                      <br><br>You will be learning how to create this example throughout the tutorial
+                    </p>
+                    <p class="text-center"><iframe class = "IframeSize" src="examples/DrandDr.html" width="1000" height = "350"></iframe></p>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-responsive-next btn-success center-block" id="quiz2" data-target=
+                "#Quiz2" data-toggle="modal" type="button">Quiz<span class="glyphicon glyphicon-question-sign" ></span>
+              </button>
+              <div class="modal fade " id="Quiz2" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button class="close" data-dismiss="modal" type=
+                        "button"><span>&times;</span></button>
+                      <h3 class="modal-title" id="Quiz2_title">Quiz</h3>
+                    </div>
+                    <div class="modal-body">
+                      <iframe height="800" src="quiz/quiz20.html"
+                        width="2000"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-default btn-responsive-next"
+                        data-dismiss="modal" type="button">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="complete2"
+                onclick="Progress20(this.id)">Complete <span class="glyphicon glyphicon-ok" ></span></button>
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="undo2" onclick="Undo20(this.id)" >Undo <span class="glyphicon glyphicon-remove-circle"></span></button>
+              <button class="btn btn-info btn-responsive-next" data-target=
+                "#exercise2" data-toggle="collapse" type=
+                "button">Exercise</button>
+              <div class="collapse" id="exercise2">
+                <p><b>There will be no coding exercise for this section of the tutorial!</b>
+                  <br><br>Use the interactive example and read through the content;
+                  <br><br>1)Make sure you understand the various different event listeners
+                  <br>2)Understand why and when each event listener is invoked
+                </p>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="tab_e">
+              <h3>Event Listeners</h3>
+              <p>Now that we understand the order of which the event handlers are called in order for the browser to
+                know what JavaScript to code to execute, we can begin to utilise these events.
+                <br><br>An event listener can simply track whether any event handler the drag and drop API provides are called. If the event handler is called we are able to implement what happens if and when each of these event handlers are called. As demonstrated in the example we will be providing information about how many times the event is called during the drag and drop operation.
+                <br><br>The first step is to implement the event listeners and the count of the events will follow in the next exercises
+              </p>
+              <h4>AddEventListener</h4>
+              <p>AddEventListener is utilised to add event listeners to certain event handlers. The format of adding the event listener is provided below;</p>
+              <img src="images/drdp_addEvent.png"  class="img-responsive center-block" width="550" height="300" alt = "drag and drop event listener">
+              <p class="text-center"><b>1) target -</b>the target is element we want to attach an event handler on 
+                <br><b>2) type -</b> The type refers to a string representing the event type to listen for 
+                <br><b>3) listener -</b>The listener is the object that will receive a notification if the event occurs. This is usually a JavaScript function
+              </p>
+              <h4>Drag Event Listeners</h4>
+              <img src="images/drdp_event1.png"  class="img-responsive center-block" width="550" height="300" alt = "drag and drop event listener">
+              <p>To add the event listeners for the event handlers relating to the draggable image we need to firstly get a reference of the image. Next three event listeners are created one for each of the event handlers. The target of the event listeners is the image, the event which is being listened for are the API event handlers and finally the object that will receive the notification will be a JavaScript function created in the following exercises.</p>
+              <h4>Drop Event Listeners</h4>
+              <img src="images/drdp_event2.png"  class="img-responsive center-block" width="550" height="300" alt = "drag and drop event listener">
+              <p>The same logic applied above is also carried out for the drop event handlers. The four event listeners are created for each of the event handlers associated with the drop operation. They all target the dropZone and the object receiving the notification will be a function which again will be created in the following exercises.</p>
+              <button class="btn btn-responsive-next btn-success center-block" id="quiz3" data-target=
+                "#Quiz4" data-toggle="modal" type="button">Quiz<span class="glyphicon glyphicon-question-sign" ></span>
+              </button>
+              <div class="modal fade " id="Quiz4" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button class="close" data-dismiss="modal" type=
+                        "button"><span>&times;</span></button>
+                      <h3 class="modal-title" id="Quiz4_title">Quiz</h3>
+                    </div>
+                    <div class="modal-body">
+                      <iframe height="800" src="quiz/quiz21.html"
+                        width="2000"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-default btn-responsive-next"
+                        data-dismiss="modal" type="button">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="complete3"
+                onclick="Progress20(this.id)" >Complete <span class="glyphicon glyphicon-ok" ></span></button>
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="undo3" onclick="Undo20(this.id)">Undo <span class="glyphicon glyphicon-remove-circle" ></span></button>
+              <button class="btn btn-info btn-responsive-next" data-target=
+                "#exercise3" data-toggle="collapse" type=
+                "button">Exercise</button>
+              <div class="collapse" id="exercise3">
+                <p><b>Add event listeners to listen for each of the event handlers</b>
+                  <br><br>The event listeners will;
+                  <br><br>1)Target the draggable image and listen for all the event handlers associated with this element
+                  <br>2)Target the drop zone and listen for the event handlers associated with this element
+                  <br>3)Specify the function in which will recieve a notification if the event occurs and these will be created in the next two exercises
+                </p>
+                <div class="hint">
+                  <button class="btn btn-default btn-responsive-next"
+                    data-target="#hint3" data-toggle="collapse" type="button">See
+                  hint</button>
+                  <div class="collapse" id="hint3">
+                    <br>
+                    <p>Specify two event listeners for the draggable image. One listening for the dragstart event handler and the other listening for the dragend handler
+                      <br>Specify four event listeners for the dropzone - this being dropleave, drop, dragenter and dragover.
+                    </p>
+                  </div>
+                  <br><br><button class="btn btn-info btn-responsive-next" data-target=
+                    "#Modal3" data-toggle="modal" type="button">Edit
+                  Code</button> 
+                  <div class="modal fade" id=
+                    "Modal3" tabindex="-1">
+                    <div class="modal-dialog ">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal" type=
+                            "button"><span>&times;</span></button>
+                          <h3 class="modal-title" id="Exercise3_edit">Edit code</h3>
+                        </div>
+                        <div class="modal-body">
+                          <iframe src="Browser_editor.html" width="2000" height= "950"></iframe>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-info btn-responsive-next" data-target="#ModalA3" data-toggle="modal" type="button">See Answer</button> 
+                          <button class="btn btn-default btn-responsive-next" data-dismiss="modal" type="button">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id=
+                    "ModalA3" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal" type=
+                            "button"><span>&times;</span></button>
+                          <h3 class="modal-title" id="Exercise2_answer">Exercise 2
+                            Answer
+                          </h3>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-md-6" ><iframe width = "600" height ="400" src="exercises/drdp_3.txt"></iframe></div>
+                            <div>
+                              <div class = "row">
+                                <div class="col-md-6 embed-responsive embed-responsive-16by9">
+                                  <video width="600" height="440" controls>
+                                    <source src="exercises/drdp2.mp4" type="video/mp4">
+                                    <source src="exercises/drdp2.ogv" type="video/ogg">
+                                    <source src="exercises/drdp2.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                  </video>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-default btn-responsive-next"
+                            data-dismiss="modal" type="button">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="tab_c">
+              <h3>Drag functions</h3>
+              <p>In the previous exercise we added event listeners for all of the event handlers of the drag and drop API. This section focuses on creating the functions for the events handlers relating to the draggable image. </p>
+              <h4>DataTransfer object</h4>
+              <p>Before creating any functions, we firstly need to understand how to set information relating to the drag and drop operation. In order to append the image onto the drop zone we need access to the image id.
+                <br><br>The DataTransfer object is used to hold data about the elements that are being dragged during the drag and drop operation. This object is available from the dataTransfer property of all drag events. In order for the DataTransfer object to hold the id of the draggable image we need to use the setData method. The method will tell the DataTransfer object to hold the id of the image so we can access the image when the drop event handler occurs and then append the image using it's id onto the drop zone.
+              </p>
+              <img src="images/drdp_dataTransfer.png"  class="img-responsive center-block" alt ="drag and drop dataTransfer" width="550" height="300">
+              <p class="text-center">The setData method is called by stating the following;
+                <br><b>object.setData(dataFormat,data);</b>
+                <br>1) object - Assigns data to the dataTransfer object accessed through the event object. 
+                <br>2) dataFormat - The dataformat is the format of the data - the id is text format
+                <br>3) data - The data refers to the data to add. We want to add the id of the element that triggered the event - this being the image
+              </p>
+              <h4>handleStart function</h4>
+              <img src="images/drdp_handleStart.png" alt ="handleStart function" class="img-responsive center-block" width="550" height="300">
+              <p class="text-center">The image above shows the handleStart function which controls what happens when a user starts dragging the image.
+                <br><br>1) We firstly have to create a count variable which is incremented each time the dragStart event handler is called.
+                <br>2) Next we add the setData method to store the image id
+                <br>3) Finally we create a paragraph id and access it to display the count variable each time the dragStart handler is called
+              </p>
+              <button class="btn btn-responsive-next btn-success center-block" id="quiz3" data-target=
+                "#Quiz3" data-toggle="modal" type="button">Quiz<span class="glyphicon glyphicon-question-sign" ></span>
+              </button>
+              <div class="modal fade " id="Quiz3" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button class="close" data-dismiss="modal" type=
+                        "button"><span>&times;</span></button>
+                      <h3 class="modal-title" id="Quiz3_title">Quiz</h3>
+                    </div>
+                    <div class="modal-body">
+                      <iframe height="800" src="quiz/quiz22.html"
+                        width="2000"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-default btn-responsive-next"
+                        data-dismiss="modal" type="button">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="complete4"
+                onclick="Progress20(this.id)" >Complete <span class="glyphicon glyphicon-ok" ></span></button>
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="undo4" onclick="Undo20(this.id)">Undo <span class="glyphicon glyphicon-remove-circle" ></span></button>
+              <button class="btn btn-info btn-responsive-next" data-target= "#exercise4" data-toggle="collapse" type= "button">Exercise</button>
+              <div class="collapse" id="exercise4">
+                <p><b>Create the handleStart and handleEnd functions which will display the amount of times the dropStart and dragEnd event handlers are called during the drag and drop operation</b>
+                  <br><br>Remember that;
+                  <br><br>1)The handleStart function needs to set the DataTransferObject to hold the image id (it only needs to be stored once)
+                  <br>2)For each function create a count variable that will increment by 1 each time it is called
+                  <br>3)You need to create a heading and access it using JavaScript within each function (this will display the count)
+                </p>
+                <div class="hint">
+                  <button class="btn btn-default btn-responsive-next"
+                    data-target="#hint4" data-toggle="collapse" type="button">See
+                  hint</button>
+                  <div class="collapse" id="hint4">
+                    <br>To increment a count variable simply place count++ within the function
+                    <p>
+                      <br>Remember to initialize your count variable to 1
+                    </p>
+                  </div>
+                  <br><br><button class="btn btn-info btn-responsive-next" data-target=
+                    "#Modal4" data-toggle="modal" type="button">Edit
+                  Code</button> 
+                  <div class="modal fade" id=
+                    "Modal4" tabindex="-1">
+                    <div class="modal-dialog ">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal" type=
+                            "button"><span>&times;</span></button>
+                          <h3 class="modal-title" id="Exercise4_edit">Edit code</h3>
+                        </div>
+                        <div class="modal-body">
+                          <iframe src="Browser_editor.html" width="2000" height= "950"></iframe>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-info btn-responsive-next" data-target="#ModalA4" data-toggle="modal" type="button">See Answer</button> 
+                          <button class="btn btn-default btn-responsive-next" data-dismiss="modal" type="button">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id=
+                    "ModalA4" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal" type=
+                            "button"><span>&times;</span></button>
+                          <h3 class="modal-title" id="Exercise3_answer">Exercise 3
+                            Answer
+                          </h3>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-md-6" ><iframe width = "600" height ="400" src="exercises/drdp_4.txt"></iframe></div>
+                            <div>
+                              <div class = "row">
+                                <div class="col-md-6 embed-responsive embed-responsive-16by9">
+                                  <video width="600" height="440" controls>
+                                    <source src="exercises/drdp3.mp4" type="video/mp4">
+                                    <source src="exercises/drdp3.ogv" type="video/ogg">
+                                    <source src="exercises/drdp3.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                  </video>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-default btn-responsive-next"
+                            data-dismiss="modal" type="button">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="tab_d">
+              <h3>Drop functions</h3>
+              <p>Before we begin creating the four functions to show the count of the dragleave, drop, dragenter and dragover events we firstly need to understand two addtional features that need to be added to the handledrop function</p>
+              <h4>Browser Default</h4>
+              <img src="images/preventdefault.png"  class="img-responsive center-block" width="350" height="300" alt = "prevent default code">
+              <br>
+              <p>The preventDefault method needs to be the first method added to the handleDrop function which will listen for the drop handler. The method simply prevents the default action of the element from happening. In this case the default behaviour for an image is for it to be dragged, however we want the image to be appended to the drop zone.</p>
+              <h4>Add image to drop zone</h4>
+              <img src="images/drdp_handleEnd.png"  class="img-responsive center-block" width="800" height="500" alt = "add images to drop zone code">
+              <br>
+              <p>In order to be able to append the image to the drop zone we firstly need to access the image id from the DataTransfer Object that was set in the previous exercise. The method used to do this is demonstrated above - we simply call the getData method specifying the data format which is text. Next in order to actually append the image onto the drop zone we will need to use the.target.appendChild method. This method will append the image to the target which is the drop zone. We just need to simply supply the id of the image to this method.</p>
+              <button class="btn btn-responsive-next btn-success center-block" id="quiz3" data-target=
+                "#Quiz5" data-toggle="modal" type="button">Quiz<span class="glyphicon glyphicon-question-sign" ></span>
+              </button>
+              <div class="modal fade " id="Quiz5" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button class="close" data-dismiss="modal" type=
+                        "button"><span>&times;</span></button>
+                      <h3 class="modal-title" id="Quiz5_title">Quiz</h3>
+                    </div>
+                    <div class="modal-body">
+                      <iframe height="800" src="quiz/quiz23.html"
+                        width="2000"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-default btn-responsive-next"
+                        data-dismiss="modal" type="button">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="complete5"
+                onclick="Progress20(this.id)" >Complete <span class="glyphicon glyphicon-ok" ></span></button>
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="undo5" onclick="Undo20(this.id)">Undo <span class="glyphicon glyphicon-remove-circle" ></span></button>
+              <button class="btn btn-info btn-responsive-next" data-target=
+                "#exercise5" data-toggle="collapse" type=
+                "button">Exercise</button>
+              <div class="collapse" id="exercise5">
+                <p><b>Create the handleLeave, handleEnter, handleDrop, handleOver functions which will display the amount of times event handlers associated with the drop zone are called during the drag and drop operation</b>
+                  <br><br>Remember that;
+                  <br><br>1)You will need to use the preventDefault() method within the handleDrop function to stop default browser behaviour
+                  <br>2)The image will need to append to the drop zone
+                  <br>3)The number of times each function is given a notification will need to be displayed
+                </p>
+                <div class="hint">
+                  <button class="btn btn-default btn-responsive-next"
+                    data-target="#hint5" data-toggle="collapse" type="button">See
+                  hint</button>
+                  <div class="collapse" id="hint5">
+                    <br>Add the preventDefault() method to the beginning of the handleDrop function
+                    <p>
+                      <br>To append the image to the drop zone use the following statement - event.target.appendChild and pass the id of the image to the method
+                    </p>
+                  </div>
+                  <br><br><button class="btn btn-info btn-responsive-next" data-target=
+                    "#Modal5" data-toggle="modal" type="button">Edit
+                  Code</button> 
+                  <div class="modal fade" id=
+                    "Modal5" tabindex="-1">
+                    <div class="modal-dialog ">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal" type=
+                            "button"><span>&times;</span></button>
+                          <h3 class="modal-title" id="Exercise5_edit">Edit code</h3>
+                        </div>
+                        <div class="modal-body">
+                          <iframe src="Browser_editor.html" width="2000" height= "950"></iframe>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-info btn-responsive-next" data-target="#ModalA5" data-toggle="modal" type="button">See Answer</button> 
+                          <button class="btn btn-default btn-responsive-next" data-dismiss="modal" type="button">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id=
+                    "ModalA5" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal" type=
+                            "button"><span>&times;</span></button>
+                          <h3 class="modal-title" id="Exercise4_answer">Exercise 4
+                            Answer
+                          </h3>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-md-6" ><iframe width = "600" height ="400" src="exercises/drdp_5.txt"></iframe></div>
+                            <div>
+                              <div class = "row">
+                                <div class="col-md-6 embed-responsive embed-responsive-16by9">
+                                  <video width="600" height="440" controls>
+                                    <source src="exercises/drdp4.mp4" type="video/mp4">
+                                    <source src="exercises/drdp4.ogv" type="video/ogg">
+                                    <source src="exercises/drdp4.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                  </video>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-default btn-responsive-next"
+                            data-dismiss="modal" type="button">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class = "panel panel-default">
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2015 Harleen Buray</p>
+      </footer>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="js/bootstrap.js"></script> 
+    <script src="js/editor.js"></script>
+    <script src="js/functions.js"></script>        
+  </body>
+</html>
+

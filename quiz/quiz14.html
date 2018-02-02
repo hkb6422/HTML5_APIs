@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      var answers = new Array(2);
+      answers[0] = "drawImage(image,x,y)";
+      answers[1] = "Using the getImageData method and specifying the area in which to apply the method";
+      answers[2] = "A one dimensional array with RGBA values";
+      answers[3] = "putImage(image,x,y)";
+      
+      var totalQuestions = 4;
+      var totalChoices = 3;
+      
+      function getScore(form) {
+        var score = 0;
+        var buttonSelected;
+        for (i=0; i<totalQuestions; i++) { 
+          iterateChoices = i*totalChoices
+          for (y=0; y<totalChoices; y++) {
+            buttonSelected = form.elements[iterateChoices + y];
+            if (buttonSelected.checked && buttonSelected.value == answers[i]) {
+                score++;
+                break;
+            }
+          }
+        
+          document.getElementById("finalscore").innerHTML= "You got " + (score) + " out of " + (totalQuestions) + " questions correct!";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-md-offset-3">
+            <h2>Canvas Pixel Manipulation Quiz</h2>
+            <form id="Quiz" name="Quiz">
+              <br><b>1.What method and arguments are used to draw an image onto the canvas?</b>
+              <br><input name="q1" type="radio" value="drawImage(image,x,y)">drawImage(image,x,y)
+              <br><input name="q1" type="radio" value="drawImage(image)">drawImage(image)
+              <br><input name="q1" type="radio" value="drawImage(image,y,x)">drawImage(image,y,x)
+
+              <br><b>2.How do we retrieve the information about an image?</b>
+              <br><input name="q2" type="radio" value="Using the getImageData method and specifying the  area in which to apply the method">Using the getImageData method and specifying the area in which to apply the method
+              <br><input name="q2" type="radio" value="Using the getImageData method and specifying the image path">Using the getImageData method and specifying the image path
+              <br><input name="q2" type="radio" value="Using the getImageData method and specifying the image name">Using the getImageData method and specifying the image name
+
+              <br><b>3.What does the data property contain which is returned from the getImageData method?</b>
+              <br><input name="q3" type="radio" value="A one dimensional array with RGBA values">A one dimensional array with RGBA values
+              <br><input name="q3" type="radio" value="The image size and width">The image size and width
+              <br><input name="q3" type="radio" value="A one dimensional array with RGB values">A one dimensional array with RGB values
+
+              <br><b>4.How do you draw a modified image back onto the canvas?</b>
+              <br><input name="q4" type="radio" value="putImage(image,x,y)">putImage(image,x,y)
+              <br><input name="q4" type="radio" value="putImage(image)">putImage(image)
+              <br><input name="q4" type="radio" value="putImage(image,y,x)">putImage(image,y,x)
+              <br><br><input type = "button" class="btn btn-info btn-responsive-next" value = "Get Score" onClick="getScore(this.form)">
+              <br><br><input type="reset" value="Reset"  class="btn btn-info btn-responsive-next">
+            </form>
+            <br>
+            <p id="finalscore"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script>
+  </body>
+</html>

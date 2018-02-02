@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas Example</title>
+    <style>
+      #myCanvas{
+      background:white;
+      border: 3px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id = "myCanvas" width = "400" height = "400"></canvas>
+    <script>
+      var canvas = document.getElementById("myCanvas");
+
+      if (canvas.getContext) {
+      var ctx = canvas.getContext("2d"); 
+      
+      ctx.beginPath();  
+      ctx.lineWidth = 7;  
+      ctx.lineCap = "round";  
+      
+      ctx.moveTo(30, 200);  
+      ctx.lineTo(30, 50); 
+      ctx.lineTo(65, 50);  
+
+      ctx.moveTo(30, 120); 
+      ctx.lineTo(65, 120);  
+      ctx.strokeStyle = "black";  
+      ctx.stroke();
+      
+      //1st curve
+      ctx.beginPath();  
+      ctx.moveTo(65, 50);  
+      ctx.bezierCurveTo(120, 50, 120, 120, 65, 120);  
+      ctx.strokeStyle = "#CC0066"; 
+      ctx.stroke();
+      
+      //2nd curve
+      ctx.beginPath();
+      ctx.moveTo(65, 120);  
+      ctx.bezierCurveTo(140, 120, 150, 220, 30, 200);  
+      ctx.strokeStyle = "#990099"; 
+      ctx.stroke();
+      }
+      
+      else {
+      	alert("Sorry your browser doesn't support the Canvas API");
+      }
+      
+    </script>
+  </body>
+</html>

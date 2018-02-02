@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      var answers = new Array(2);
+      answers[0] = "ctx.createLinearGradient(x0,y0,x1,y1)";
+      answers[1] = "createRadialGradient(x0,y0,r0,x1,y1)";
+      answers[2] = "To add different colours to an object";
+      answers[3] = "Call the addColourStop method four times with the stop argument being 0, 0.25, 0.5, 0.75 and the colour parameter being a different colour each time";
+      
+      var totalQuestions = 4;
+      var totalChoices = 3;
+      
+      function getScore(form) {
+        var score = 0;
+        var buttonSelected;
+        for (i=0; i<totalQuestions; i++) { 
+          iterateChoices = i*totalChoices
+          for (y=0; y<totalChoices; y++) {
+            buttonSelected = form.elements[iterateChoices + y];
+            if (buttonSelected.checked && buttonSelected.value == answers[i]) {
+                score++;
+                break;
+            }
+          }
+        
+          document.getElementById("finalscore").innerHTML= "You got " + (score) + " out of " + (totalQuestions) + " questions correct!";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-md-offset-3">
+            <h2>Canvas Gradient Quiz</h2>
+            <form id="Quiz" name="Quiz">
+              <br><b>1.What are the correct parameters for the createLinearGradient method?</b>
+              <br><input name="q1" type="radio" value="ctx.createLinearGradient(x0,y0,x1,y1) ">ctx.createLinearGradient(x0,y0,x1,y1)
+              <br><input name="q1" type="radio" value="ctx.createLinearGradient(x0,y0)">ctx.createLinearGradient(x0,y0)
+              <br><input name="q1" type="radio" value="ctx.createLinearGradient(x0,x1,y0,y1) ">ctx.createLinearGradient(x0,x1,y0,y1)
+              <br><b>2.What are the correct parameters for the createRadialGradient method?</b>
+              <br><input name="q2" type="radio" value="createRadialGradient(x0,y0,x1,y1,r0)">createRadialGradient(x0,y0,x1,y1,r0)
+              <br><input name="q2" type="radio" value="createRadialGradient(x0,y0,r0,x1,y1)">createRadialGradient(x0,y0,r0,x1,y1)
+              <br><input name="q2" type="radio" value="createRadialGradient(x0,y0,r0,x1,y1,r1)">createRadialGradient(x0,y0,r0,x1,y1,r1)
+              <br><b>3.Why is the addColourStop method used?</b>
+              <br><input name="q3" type="radio" value="To add different colours to an object">To add different colours to an object
+              <br><input name="q3" type="radio" value="To specify one colour to fill the object">To specify one colour to fill the object
+              <br><input name="q3" type="radio" value="To add a maximum of four different colours to an object">To add a maximum of four different colours to an object
+              <br><b>4.How would you add four colours to a shape?</b>
+              <br><input name="q4" type="radio" value="Call the addColourStop method four times with the stop argument being 0, 0.25, 0.5, 0.75 and the colour parameter being a different colour each time">Call the addColourStop method four times with the stop argument being 0, 0.25, 0.5, 0.75 and the colour parameter being a different colour each time
+              <br><input name="q4" type="radio" value="Call the addColourStop method four times with the stop argument being 0, 1, 2, 3 and the colour parameter being a different colour each time">Call the addColourStop method four times with the stop argument being 0, 1, 2, 3 and the colour parameter being a different colour each time
+              <br><input name="q4" type="radio" value="Call the addColourStop method four times with the stop argument being 1, 2, 3, 4 and the colour parameter being a different colour each time">Call the addColourStop method four times with the stop argument being 1, 2, 3, 4 and the colour parameter being a different colour each time
+              <br><br><input type = "button" class="btn btn-info btn-responsive-next" value = "Get Score" onClick="getScore(this.form)">
+              <br><br><input type="reset" value="Reset"  class="btn btn-info btn-responsive-next">
+            </form>
+            <br>
+            <p id="finalscore"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script>
+  </body>
+</html>

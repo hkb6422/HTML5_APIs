@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz</title>
+    <meta charset="utf-8">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      //array to hold answers to questionnaire
+      var answers = new Array(3);
+      answers[0] = "Yes, its optional";
+      answers[1] = "When retrieving the location of a device fails";
+      answers[2] = "error.message";
+      answers[3] = "Yes, as it informs users of the particular error that occurred";
+      
+      var totalQuestions = 4;
+      var totalChoices = 3;
+      
+      function getScore(form) {
+        var score = 0;
+        var buttonSelected;
+        for (i=0; i<totalQuestions; i++) { 
+          iterateChoices = i*totalChoices
+          for (y=0; y<totalChoices; y++) {
+            buttonSelected = form.elements[iterateChoices + y];
+            if (buttonSelected.checked && buttonSelected.value == answers[i]) {
+                score++;
+                break;
+            }
+          }
+        document.getElementById("finalscore").innerHTML= "You got " + (score) + " out of " + (totalQuestions) + " questions correct!";
+        }
+      }
+      	
+    </script>
+  </head>
+  <body>
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-md-offset-3">
+            <h2>Error Object Quiz</h2>
+            <form name="Quiz">
+              <br><b>1.Is the errorCallBack parameter of the watchPosition and getPosition method optional?</b>
+              <br><input type="radio" name="q1" value="Yes, its optional">Yes, its optional
+              <br><input type="radio" name="q1" value="No, its compulsory">No, its compulsory
+              <br><input type="radio" name="q1" value="I don't know">I don't know
+              <br><b>2.What causes the errorCallBack function to be invoked?</b>
+              <br><input type="radio" name="q2" value="When retrieving the location of a device fails">When retrieving the location of a device fails
+              <br><input type="radio" name="q2" value="When a user exits the browser">When a user exits the browser
+              <br><input type="radio" name="q2" value="When a user opens the browser">When a user opens the browser
+              <br><b>3.How do you access the message property from the error object?</b>
+              <br><input type="radio" name="q3" value="error.message">error.message
+              <br><input type="radio" name="q3" value="message.error">message.error
+              <br><input type="radio" name="q3" value="position.message">position.message
+              <br><b>4.Is it important to display the error message and code?</b>
+              <br><input type="radio" name="q4" value="Yes, as it informs users of the particular error that occurred">Yes, as it informs users of the particular error that occurred
+              <br><input type="radio" name="q4" value="No, they just need to know that an error occurred">No, they just need to know that an error occurred
+              <br><input type="radio" name="q4" value="No, users don't need to know about errors">No, users don't need to know about errors
+              <br><br><input type = "button" class="btn btn-info btn-responsive-next" value = "Get Score" onClick="getScore(this.form)">
+              <br><br><input type="reset" value="Reset"  class="btn btn-info btn-responsive-next">
+            </form>
+            <br>
+            <p id = "finalscore"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script> 
+  </body>
+</html>

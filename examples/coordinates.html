@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Canvas coordinates</title>
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      function displayCoords(){
+          var canvas_context = document.getElementById('myCanvas');
+          var canvas_context = canvas_context.getContext("2d");
+          
+          canvas_context.strokeStyle='#DCDCDC';
+         
+          for (i=0; i<=300; i=i+20) {
+            canvas_context.moveTo(i,0);
+            canvas_context.lineTo(i,225);
+            canvas_context.stroke();
+      
+          } 
+      
+          for (y=0; y<=225; y=y+20) {
+            canvas_context.moveTo(0,y);
+            canvas_context.lineTo(300,y);
+            canvas_context.stroke();
+        }
+          
+          canvas_context.canvas.addEventListener('mousemove', function(event){
+          var X = event.clientX - canvas_context.canvas.offsetLeft;
+          var Y = event.clientY - canvas_context.canvas.offsetTop;
+          var coords = document.getElementById('coords');
+          coords.innerHTML ="X =" + X+" Y = "+ Y;
+          });
+      }
+      window.addEventListener('load', function(event) {
+          displayCoords();
+      });
+    </script>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="300" height="225"></canvas>
+    <h2 id="coords">X = 0  Y = 0</h2>
+  </body>
+</html>

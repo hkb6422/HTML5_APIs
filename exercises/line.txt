@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Line Example</title>
+    <style>
+      #myCanvas{
+      background:white;
+      border: 3px solid black;
+      }
+    </style>
+    <script>
+      window.onload = drawShape;
+      
+      function drawShape(){
+        var canvas = document.getElementById('myCanvas');
+       
+        if (canvas.getContext){
+      
+          var ctx = canvas.getContext('2d'); 
+          for (i=0;i<20;i++){
+             ctx.lineWidth = i+2;
+             ctx.beginPath();
+             ctx.moveTo(i*20,10);
+             ctx.lineTo(i*20,200);
+             ctx.lineCap=getStyle();
+             ctx.strokeStyle = getRgbColor();
+             ctx.stroke();
+          }
+        } else {
+          alert('Your browser does not support the canvas API');
+        }
+      }
+      
+      function getRgbColor() {
+            var r = 255*Math.random()|0;
+            var g = 255*Math.random()|0;
+            var b = 255*Math.random()|0;
+      
+          return "rgb(" + r + "," + g + "," + b + ")";
+      }
+      
+      function getStyle() {
+      var style_array = ['square','butt','round'];
+      var i = Math.floor(Math.random() * style_array.length);
+      var style = style_array[i];
+      return style
+      }
+      
+    </script>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Canvas Example</title>
+    <style>
+      #myCanvas{
+      background:white;
+      border: 3px solid black;
+      } 
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="520"></canvas>
+    <script>
+      var canvas = document.getElementById("myCanvas");
+      
+      if (canvas.getContext){
+      
+       var ctx = canvas.getContext("2d");
+       ctx.beginPath();
+       ctx.arc(200,100,70,0,2*Math.PI,false);
+       ctx.fillStyle = "yellow";
+       ctx.fill();
+       ctx.linewidth = 5;
+       ctx.strokeStyle = "black";
+       ctx.stroke();
+       
+       ctx.beginPath();
+       ctx.moveTo(170,90);
+       ctx.arc(170,90,7,0,Math.PI*2, false);
+       ctx.fillStyle="black";
+       ctx.fill();
+       
+       ctx.beginPath();
+       ctx.moveTo(230,90);
+       ctx.arc(230,90,7,0,Math.PI*2,false);
+       ctx.fillStyle = "black";
+       ctx.fill();
+       
+       ctx.beginPath();
+       ctx.moveTo(240,110);
+       ctx.arc(200,110,40,0,Math.PI,false);
+       ctx.stroke();
+       
+       ctx.beginPath();
+       ctx.moveTo(200,170);
+       ctx.lineTo(200,400);
+       ctx.stroke();
+       
+       ctx.beginPath();
+       ctx.moveTo(200,200);
+       ctx.lineTo(100,350);
+       ctx.stroke();
+       
+       ctx.beginPath();
+       ctx.moveTo(200,200);
+       ctx.lineTo(300,350);
+       ctx.stroke();
+       
+       ctx.beginPath();
+       ctx.moveTo(200,400);
+       ctx.lineTo(250,500);
+       ctx.stroke();
+       
+       ctx.beginPath();
+       ctx.moveTo(200,400);
+       ctx.lineTo(150,500);
+       ctx.stroke();
+      }
+      else {
+        alert("Sorry your browser doesn't support the Canvas API");
+      }
+        
+    </script>
+  </body>
+</html>

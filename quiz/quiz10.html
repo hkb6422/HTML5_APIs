@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz</title>
+    <meta charset="UTF-8">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      //array to hold answers to questionnaire
+      var answers = new Array(2);
+      answers[0] = "if (canvas.getContext)";
+      answers[1] = "A blank 300 wide by 500 high canvas";
+      answers[2] = "canvas.getContext('2d');";
+      answers[3] = "Just the canvas";
+      
+      
+      var totalQuestions = 4;
+      var totalChoices = 3;
+      
+      function getScore(form) {
+        var score = 0;
+        var buttonSelected;
+        for (i=0; i<totalQuestions; i++) { 
+          iterateChoices = i*totalChoices
+          for (y=0; y<totalChoices; y++) {
+            buttonSelected = form.elements[iterateChoices + y];
+            if (buttonSelected.checked && buttonSelected.value == answers[i]) {
+                score++;
+                break;
+            }
+          }
+        
+          document.getElementById("finalscore").innerHTML= "You got " + (score) + " out of " + (totalQuestions) + " questions correct!";
+        }
+      
+      }
+      	
+    </script>
+  </head>
+  <body>
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-md-offset-3">
+            <h2>Canvas Basics Quiz</h2>
+            <form name="Quiz">
+              <b><br>1.What if statement below tests whether the browser supports the canvas API?</b>
+              <br><input type="radio" name="q1" value="if (canvas.getContext)">if (canvas.getContext)
+              <br><input type="radio" name="q1" value="if (canvas.getContent)">if (canvas.getContent)
+              <br><input type="radio" name="q1" value="if (canvas.supported)">if (canvas.supported)
+              <b><br>2.What is initially displayed when defining the canvas element tags?</b>
+              <br><input type="radio" name="q2" value="A 300 wide by 500 high canvas with a default drawing context">A 300 wide by 500 high canvas with a default drawing context
+              <br><input type="radio" name="q2" value="A 300 wide by 500 high canvas with default style applied">A 300 wide by 500 high canvas with default style applied
+              <br><input type="radio" name="q2" value="A blank 300 wide by 500 high canvas">A blank 300 wide by 500 high canvas
+              <b><br>3.How do you create a 2D drawing context?</b>
+              <br><input type="radio" name="q3" value="canvas.getContext('2d');">canvas.getContext('2d');
+              <br><input type="radio" name="q3" value="canvas.getContent('2d');">canvas.getContent('2d');
+              <br><input type="radio" name="q3" value="canvas.get('2d');">canvas.get('2d');
+              <b><br>4.When applying styling to the canvas, what is it applied to?</b>
+              <br><input type="radio" name="q4" value="Just the canvas">Just the canvas
+              <br><input type="radio" name="q4" value="The canvas and the drawings on the canvas">The canvas and the drawings on the canvas
+              <br><input type="radio" name="q4" value="Just the canvas drawings">Just the canvas drawings
+              <br><br><input type = "button" class="btn btn-info btn-responsive-next" value = "Get Score" onClick="getScore(this.form)">
+              <br><br><input type="reset" value="Reset"  class="btn btn-info btn-responsive-next">
+            </form>
+            <br>
+            <p id = "finalscore"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script> 
+  </body>
+</html>

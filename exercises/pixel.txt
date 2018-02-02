@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Canvas Example</title>
+      <style>
+         #myCanvas{
+         background:white;
+         border: 3px solid black;
+         }
+      </style>
+   </head>
+   <body>
+      <canvas id="myCanvas" width="400" height="400"></canvas>
+      <button type="button" id="Reset" onclick="drawImage()" >Reset</button>
+      <button type="button" id="redTint" onclick="redTint()" >Red Tint</button>
+      <script>
+       var canvas = document.getElementById('myCanvas');    
+
+       window.onload = drawImage;
+
+       function drawImage() {
+	if (canvas.getContext) {
+	ctx = myCanvas.getContext('2d');
+	image = new Image();
+	
+	image.onload = function(){
+	ctx.drawImage(image, 10, 0);
+	};
+	  image.src = "examples/bridge.jpg";
+	}
+
+	else {
+		alert("Sorry your browser doesn't support the canvas API");
+	}
+     }
+
+      function redTint(){
+	var imageInfo = ctx.getImageData(10, 0, image.width, image.height);
+	var imageArray = imageInfo.data;
+	for(var i = 0; i < imageArray.length; i += 4) {
+	imageArray[i+1] = 0; 
+	imageArray[i+2] = 0; 
+	imageArray[i+3] = 127; 
+	}
+	  ctx.putImageData(imageInfo, 10, 0);
+	}
+      </script>
+   </body>
+</html>

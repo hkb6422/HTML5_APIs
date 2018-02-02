@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="Geolocation API Tutorial" name="description">
+    <meta content="Harleen Buray" name="author">
+    <title>Geolocation</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/carousel.css" rel="stylesheet">
+  </head>
+  <!-- Logo
+    ================================================== -->
+  <body>
+    <div class="hidden-xs logo">
+        <a href="index.html"><img class="img-responsive center-block" height="200" src=
+        "images/logo.jpg" alt="logo" width="800"></a>
+    </div>
+    <div class="visible-xs logo">
+        <a href="index.html"><img class="img-responsive center-block" height="100" src=
+        "images/logo_small.jpg" alt="logo" width="400"></a>
+    </div>
+    <!-- Navbar
+      ================================================== -->
+    <div class="navbar-wrapper">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button class="navbar-toggle collapsed" data-target="#navbar"
+              data-toggle="collapse" type="button"><span class="sr-only">Toggle
+            navigation</span> <span class="icon-bar"></span> <span class=
+              "icon-bar"></span> <span class="icon-bar"></span></button> <a class=
+              "navbar-brand" href="#">Menu</a>
+          </div>
+          <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav">
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li>
+                <a href="GettingStarted.html">Getting Started</a>
+              </li>
+              <li class="active">
+                <a href="Geolocation.html">Geolocation</a>
+              </li>
+              <li>
+                <a href="DragandDrop.html">Drag and Drop</a>
+              </li>
+              <li>
+                <a href="Canvas.html">Canvas</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- Welcome Content 
+      ================================================== -->
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 ">
+            <h2>Geolocation</h2>
+            <p>The geolocation API defines a high level interface that allows us
+              to retrieve location information about a hosting device. Common
+              sources of location information include the Global Positioning System
+              (GPS) and information inferred from network details such as Wi-Fi or
+              a devices IP address.<br>
+              <br>
+              Throughout this tutorial you will learn how to obtain location
+              information from your device, plot the location on Google Maps and also
+              how to update location information as a device is moving.
+            </p>
+          </div>
+          <div class="col-md-4 hidden-xs hidden-sm">
+            <img class="img-responsive img-rounded center-block"
+              height="200" src="images/google-map.jpg" style="PADDING-TOP: 10px" width="300" alt="google maps">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Tabs
+      ================================================== -->
+    <br>
+    <ul class="nav nav-tabs nav-justified">
+      <li>
+        <a data-toggle="tab" href="#tab_a">Browser Support</a>
+      </li>
+      <li>
+        <a data-toggle="tab" href="#tab_b">Methods</a>
+      </li>
+      <li>
+        <a data-toggle="tab" href="#tab_c">Positon Object</a>
+      </li>
+      <li>
+        <a data-toggle="tab" href="#tab_d">Error Object</a>
+      </li>
+      <li>
+        <a data-toggle="tab" href="#tab_e">Options Object</a>
+      </li>
+      <li>
+        <a data-toggle="tab" href="#tab_f"> Google Maps</a>
+      </li>
+    </ul>
+    <!-- Progress Bar 
+      ================================================== -->
+    <br>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped active" style="width:0%;">
+        <span id="percentage">0%</span>
+      </div>
+    </div>
+    <!-- Methods Content
+      ================================================== -->
+    <div class="container marketing">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab_a">
+              <h3>Testing for Geolocation support</h3>
+              <p>Before trying to retrieve the location of your device we firstly need to test whether the browser being used actually supports the geolocation API.<br>
+                <br>So how do we access the geolocation API to test if it is supported? The geolocation API is published through the <b>navigator.geolocation object</b>. The navigator object contains information about the browser being used and this includes the geolocation property. Invoking the geolocation property will return a reference to the geolocation object. A reference will only be returned if the geolocation API is supported!
+                <br><br>The first thing we need to do is test whether the browser has the geolocation services available. The structure of code needed to test for the presence of the geolocation API is shown below;
+              </p>
+              <img class="img-responsive img-rounded center-block" height="200" src=
+                "images/geolocation_loop.jpg" alt = "geolocation loop">
+              <img class="img-responsive center-block" src="images/geolocation_support.jpg" width="500" alt = "geolocation support">
+              <button class="btn btn-responsive-next btn-success center-block" id="quiz1" data-target=
+                "#Quiz1" data-toggle="modal" type="button">Quiz<span class="glyphicon glyphicon-question-sign" id="icon"></span>
+              </button>
+              <div class="modal fade " id="Quiz1" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button class="close" data-dismiss="modal" type=
+                        "button"><span>&times;</span></button>
+                      <h3 class="modal-title" id="Quiz1_title">Quiz</h3>
+                    </div>
+                    <div class="modal-body">
+                      <iframe height="800" src="quiz/quiz3.html"
+                        width="2000"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-default btn-responsive-next"
+                        data-dismiss="modal" type="button">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="complete1"
+                onclick="Progress15(this.id)">Complete <span class="glyphicon glyphicon-ok" id="icon1"></span></button>
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="undo1" onclick="Undo15(this.id)">Undo <span class="glyphicon glyphicon-remove-circle" id="icon2"></span></button>
+              <!-- Exercise 1 
+                ================================================== -->
+              <button class="btn btn-info btn-responsive-next" data-target=
+                "#exercise1" data-toggle="collapse" type=
+                "button">Exercise</button>
+              <div class="collapse" id="exercise1">
+                <p><br><b>
+                  Create a HTML page and give it a title and heading<br>
+                  <br></b>
+                  <b>Next create a function called getLocation that;<br></b>
+                  <br>
+                  1) Includes an if and else statement to test for geolocation support
+                  - fill in the else statement to alert the user with a message
+                  if the browser is not supported (we will complete the if
+                  statement in the next exercise)<br>
+                  <br>
+                  2) Create a button called Get Location that will execute the
+                  getLocation function when it is clicked
+                </p>
+                <div class="hint">
+                  <button class="btn btn-default btn-responsive-next"
+                    data-target="#hint1" data-toggle="collapse" type="button">See
+                  hint</button>
+                  <div class="collapse" id="hint1">
+                    <br>
+                    <p>You will need to add an onclick event to the Get Location button</p>
+                  </div>
+                  <br><br><button class="btn btn-info btn-responsive-next" data-target=
+                    "#Modal1" data-toggle="modal" type="button">Edit
+                  Code</button> 
+                  <!-- Modal
+                    ================================================== -->
+                  <div class="modal fade" id=
+                    "Modal1" tabindex="-1">
+                    <div class="modal-dialog ">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal" type=
+                            "button"><span>&times;</span></button>
+                          <h3 class="modal-title" id="Exercise1">Edit code</h3>
+                        </div>
+                        <div class="modal-body">
+                          <iframe src="Browser_editor.html" width="2000" height= "950"></iframe>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-info btn-responsive-next"  data-target="#ModalA" data-toggle="modal" type="button">See Answer</button> 
+                          <button class="btn btn-default btn-responsive-next" data-dismiss="modal" type="button">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id=
+                    "ModalA" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal" type=
+                            "button"><span>&times;</span></button>
+                          <h3 class="modal-title" id="Exercise1_title2">Exercise 1
+                            Answer
+                          </h3>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-md-6" ><iframe width = "600" height ="400" src="exercises/Exercise_1.txt"></iframe></div>
+                            <div>
+                              <div class = "row">
+                                <div class="col-md-6 embed-responsive embed-responsive-16by9">
+                                  <video width="600" height="440" controls>
+                                    <source src="exercises/Exercise_1.mp4" type="video/mp4">
+                                    <source src="exercises/Exercise_1.ogv" type="video/ogg">
+                                    <source src="exercises/Exercise_1.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                  </video>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-default btn-responsive-next"
+                            data-dismiss="modal" type="button">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="tab-pane fade" id="tab_b">
+              <h3> Geolocation Methods</h3>
+              <p> <b>Previous Exercise: We have created an if and else statement to test for browser support. Users are alerted with a message if the geolocation API is not supported. Now we will explore the methods exposed by the geolocation object which can be accessed if the API is supported.</b>
+              </p>
+              <img src="images/geolocation_methods.png"  class="img-responsive center-block" alt = "geolocation method" width="500" height="170">
+              <p>
+                <br>The image above shows all of the methods that the geolocation object contains. Let's explore each of these methods and identify the differences between them and what they do.
+              </p>
+              <b>getCurrentPosition</b>
+              <p>The getCurrentPosition is used to get the current position of a device and the request will only be executed once. If location retrieval is successful, a Position object is returned with all the relevant information.</p>
+              <b>watchPositon</b>
+              <p>The watchPosition method is used to register a handler function that will continuously be executed each time a device's location changes. The method will return a Position object and a unique transaction ID each time the location updates.</p>
+              <b>clearWatch</b>
+              <p>The clearWatch method is used to unregister the handlers previously declared using the watchPostion method.</p>
+              <br>
+              <h4>getCurrentPosition and watchPosition Parameters</h4>
+              <!-- Buttons changing Images
+                ================================================== -->
+              <div class="btn-group btn-group-justified"  >
+                <div class="btn-group">
+                  <a class="btn btn-default btn-responsive-quiz" role="button" onclick="displayImage()">code</a>
+                </div>
+                <div class="btn-group">
+                  <a class="btn btn-default btn-responsive-quiz" role="button" onclick="displayImage1()">successCallback</a>
+                </div>
+                <div class="btn-group">
+                  <a class="btn btn-default btn-responsive-quiz" role="button" onclick="displayImage2()">errorCallback</a>
+                </div>
+                <div class="btn-group">
+                  <a class="btn btn-default btn-responsive-quiz" role="button" onclick="displayImage3()">options</a>
+                </div>
+              </div>
+        
+              <img id="default_code" src="images/geolocation_parameters.jpg" class="img-responsive img-rounded center-block" style="PADDING-TOP: 20px" alt = "geolocation parameters">
+              <br>
+              <h4>clearWatch Parameters</h4>
+              <img src="images/geolocation_clear.jpg"  class="img-responsive img-rounded center-block" alt= "geolocation clear">
+              <button class="btn btn-responsive-next btn-success center-block" id="quiz2" data-target=
+                "#Quiz2" data-toggle="modal" type="button">Quiz<span class="glyphicon glyphicon-question-sign" id="iconq2"></span>
+              </button>
+              <div class="modal fade " id="Quiz2" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button class="close" data-dismiss="modal" type=
+                        "button"><span>&times;</span></button>
+                      <h3 class="modal-title" id="Quiz2_title">Quiz</h3>
+                    </div>
+                    <div class="modal-body">
+                      <iframe height="800" src="quiz/quiz4.html"
+                        width="2000"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-default btn-responsive-next"
+                        data-dismiss="modal" type="button">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Exercise 2 
+                ================================================== -->
+              <button id ="complete2" onclick="Progress20(this.id)" class="btn btn-responsive-next btn-warning btn pull-right">Complete <span id = "iconc2" class="glyphicon glyphicon-ok"></span></button>  
+              <button id ="undo2" onclick="Undo20(this.id)" class="btn btn-responsive-next btn-warning btn pull-right">Undo <span id = "iconu2" class="glyphicon glyphicon-remove-circle"></span></button> 
+              <button type="button" class="btn btn-info btn-responsive-next" data-toggle="collapse" data-target="#exercise2">Exercise
+              </button>
+              <div id="exercise2" class="collapse">
+                <p>
+                  <br><b>Now lets finish the if statement which tests if the browser supports the geolocation API. If the geolocation API is supported we want to access the methods the geolocation object contains;</b><br><br>1)Firstly, we want to invoke the getPosition method 
+                  <br>2)Add a successCallBack parameter to the getPosition method call (the successCallBack function will be created in the next exercise)
+                </p>
+                <div class = "hint">
+                  <button type="button" class="btn btn-default btn-responsive-next" data-toggle="collapse" data-target="#hint2">See hint
+                  </button>
+                  <div id="hint2" class="collapse">
+                    <p>
+                      <br>Remember the getPosition method exposed by the geolocation object.
+                    </p>
+                  </div>
+                </div>
+                <br><button type="button" class="btn btn-info btn-responsive-next" data-toggle="modal" data-target="#Modal2">Edit Code</button>
+                <div>
+                  <div>
+                 
+                    <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="Modal2" aria-hidden="true" >
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title" id="Exercise2_title">Edit code</h3>
+                          </div>
+                          <div class="modal-body">
+                            <iframe src="Browser_editor.html" width="2000" height= "950"></iframe>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-info btn-responsive-next" data-toggle="modal" data-target="#ModalA2">See Answer</button>
+                            <button type="button" class="btn btn-default btn-responsive-next" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id="ModalA2" tabindex="-1" role="dialog" aria-labelledby="ModalA2" aria-hidden="true" >
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h3 class="modal-title" id="Exercise2">Exercise 2 Answer</h3>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-md-6" ><iframe width = "600" height ="400" src="exercises/Exercise_2.txt"></iframe></div>
+                            <div>
+                              <div class = "row">
+                                <div class="col-md-6 embed-responsive embed-responsive-16by9">
+                                  <video width="600" height="440" controls>
+                                    <source src="exercises/Exercise_2.mp4" type="video/mp4">
+                                    <source src="exercises/Exercise_2.ogv" type="video/ogg">
+                                    <source src="exercises/Exercise_2.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                  </video>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default btn-responsive-next" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab_c">
+              <h3> Position object</h3>
+              <p> <b>Previous Exercise: We have learnt about the getPosition and watchPosition methods and the parameters used. Now we will explore the position object that is returned by the methods and what properties it contains.
+                </b>
+              </p>
+              <p>The position object is returned from the watchPosition and getPosition methods if locating the device is successful. The object contains location information regarding the device we are using. The position object contains a timestamp and coords property. Take a look at the table below to see what information we can retrieve using these two properties.</p>
+              <br><img src="images/geolocation_properties.png"  class="img-responsive center-block" width="550" height="300" alt = "geolocation properties">
+              <h4>Coords property</h4>
+              <p>The position.coords property will return a coordinates object which defines the current location.
+                We are able to access any of the properties by specifying the <b>position.coords.</b> followed by the property name. The three properties which are always guaranteed to be returned are the latitude, longitude and accuracy. Other coords properties are dependent on the device you are using and will return null if they are not supported
+              </p>
+              <h4>Timestamp property</h4>
+              <p>The timestamp property will return a DOMTimeStamp which will represent the time in which the location information was retrieved.</p>
+              <button class="btn btn-responsive-next btn-success center-block" id="quiz3" data-target=
+                "#Quiz3" data-toggle="modal" type="button">Quiz<span class="glyphicon glyphicon-question-sign" id="qicon1"></span>
+              </button>
+              <div class="modal fade " id="Quiz3" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button class="close" data-dismiss="modal" type=
+                        "button"><span>&times;</span></button>
+                      <h3 class="modal-title" id="Quiz3_title">Quiz</h3>
+                    </div>
+                    <div class="modal-body">
+                      <iframe height="800" src="quiz/quiz5.html"
+                        width="2000"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-default btn-responsive-next"
+                        data-dismiss="modal" type="button">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+               <!-- Exercise 3 
+                ================================================== -->
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="complete3"
+                onclick="Progress20(this.id)" value="">Complete <span class="glyphicon glyphicon-ok" id="cicon3"></span></button>
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="undo3" onclick="Undo20(this.id)">Undo <span class="glyphicon glyphicon-remove-circle" id="uicon3"></span></button> 
+              <button type="button" class="btn btn-info btn-responsive-next" data-toggle="collapse" data-target="#exercise3">Exercise
+              </button>
+              <div id="exercise3" class="collapse">
+                <p>
+                  <br><b>Create a function called successCallBack;</b> 
+                  <br><br>1) The function will need to invoke and display the latitude, longitude and accuracy of your location on your HTML page
+                </p>
+                <div class = "hint">
+                  <button type="button" class="btn btn-default btn-responsive-next" data-toggle="collapse" data-target="#hint3">See hint
+                  </button>
+                  <div id="hint3" class="collapse">
+                    <br>
+                    <p>
+                      You will need to create a paragraph or div element with an id and obtain a reference to this element in JavaScript to display the location information.
+                    </p>
+                  </div>
+                </div>
+                <br><button type="button" class="btn btn-info btn-responsive-next" data-toggle="modal" data-target="#Modal3">Edit Code</button>
+                <div>
+                  <div>
+                    <div class="modal fade" id=
+                      "Modal3" tabindex="-1">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button class="close" data-dismiss="modal" type=
+                              "button"><span>&times;</span></button>
+                            <h3 class="modal-title" id="Exercise3">Edit code</h3>
+                          </div>
+                          <div class="modal-body">
+                            <iframe src="Browser_editor.html" width="2000" height= "950"></iframe>
+                          </div>
+                          <div class="modal-footer">
+                            <button class="btn btn-info btn-responsive-next"
+                              data-target="#ModalA3" data-toggle="modal" type=
+                              "button">See Answer</button> <button class=
+                              "btn btn-default btn-responsive-next" data-dismiss=
+                              "modal" type="button">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal fade" id=
+                      "ModalA3" tabindex="-1">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button class="close" data-dismiss="modal" type=
+                              "button"><span>&times;</span></button>
+                            <h3 class="modal-title" id="Exercise3_title">Exercise 3
+                              Answer
+                            </h3>
+                          </div>
+                          <div class="modal-body">
+                            <div class="row">
+                              <div class="col-md-6" ><iframe width = "600" height ="400" src="exercises/Exercise_3.txt"></iframe></div>
+                              <div>
+                                <div class = "row">
+                                  <div class="col-md-6 embed-responsive embed-responsive-16by9">
+                                    <video width="600" height="440" controls>
+                                      <source src="exercises/Exercise_3.mp4" type="video/mp4">
+                                      <source src="exercises/Exercise_3.ogv" type="video/ogg">
+                                      <source src="exercises/Exercise_3.webm" type="video/webm">
+                                      Your browser does not support the video tag.
+                                    </video>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button class="btn btn-default btn-responsive-next"
+                              data-dismiss="modal" type="button">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab_d">
+              <h3> Error Object</h3>
+              <p> <b>Previous Exercise: We have retrieved and displayed location information about our device. However sometimes an error may occur when retrieving these details. We will now explore how to identify and display errors if they occur</b>
+                <br><br>A PositionError object is returned if the retrieval of location is unsuccessful and contains two properties named message and code. The table below shows all of the error details which the PositionError object contains. 
+              </p>
+              <img src="images/geolocation_error.png"  class="img-responsive center-block" alt = "geolocation error" width="450" height="170">
+              <h4>Code Property</h4>
+              <p>The code property will return a integer value which will indicate what type of error occurred when trying to retrieve the location details. The property is accessed using the statement <b>error.code</b></p>
+              <h4>Message Property</h4>
+              <p>The message property will return a string which describes the details of the error. The property is accessed using the statement <b>error.message</b></p>
+              <button class="btn btn-responsive-next btn-success center-block" id="quiz6" data-target=
+                "#Quiz6" data-toggle="modal" type="button">Quiz<span class="glyphicon glyphicon-question-sign" id="qicon6"></span>
+              </button>
+              <div class="modal fade " id="Quiz6" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button class="close" data-dismiss="modal" type=
+                        "button"><span>&times;</span></button>
+                      <h3 class="modal-title" id="Quiz6_title">Quiz</h3>
+                    </div>
+                    <div class="modal-body">
+                      <iframe height="800" src="quiz/quiz6.html"
+                        width="2000"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-default btn-responsive-next"
+                        data-dismiss="modal" type="button">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+               <!-- Exercise 4 
+                ================================================== -->
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="complete4"
+                onclick="Progress10(this.id)">Complete <span class="glyphicon glyphicon-ok" id="cicon4"></span></button>
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="undo4" onclick="Undo10(this.id)">Undo <span class="glyphicon glyphicon-remove-circle" id="uicon4"></span></button>
+              <button class="btn btn-info btn-responsive-next" data-target=
+                "#exercise4" data-toggle="collapse" type=
+                "button">Exercise</button>
+              <div class="collapse" id="exercise4">
+                <br>
+                <p><b>Create a function called errorCallBack. The function must;</b>
+                  <br><br>1) Alert the user with an error message and code if the API cannot retrieve location information
+                </p>
+                <div class="hint">
+                  <button class="btn btn-default btn-responsive-next"
+                    data-target="#hint4" data-toggle="collapse" type="button">See
+                  hint</button>
+                  <div class="collapse" id="hint4">
+                    <br>
+                    <p>You will need to add a second parameter to the getWatchPositon method call.
+                      <br>Also remember the function needs access to the error object to retrieve the code and message properties 
+                    </p>
+                  </div>
+                  <br><br><button class="btn btn-info btn-responsive-next" data-target=
+                    "#Modal4" data-toggle="modal" type="button">Edit
+                  Code</button>
+                  <div class="modal fade" id=
+                    "Modal4" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal" type=
+                            "button"><span>&times;</span></button>
+                          <h3 class="modal-title" id="Exercise4_editortitle">Edit code</h3>
+                        </div>
+                        <div class="modal-body">
+                          <iframe src="Browser_editor.html" width="2000" height= "950"></iframe>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-info btn-responsive-next"
+                            data-target="#ModalA4" data-toggle="modal" type=
+                            "button">See Answer</button> <button class=
+                            "btn btn-default btn-responsive-next" data-dismiss=
+                            "modal" type="button">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id=
+                    "ModalA4" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal" type=
+                            "button"><span>&times;</span></button>
+                          <h3 class="modal-title" id="Exercise4_title">Exercise 4
+                            Answer
+                          </h3>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-md-6" ><iframe width = "600" height ="400" src="exercises/Exercise_4.txt"></iframe></div>
+                            <div>
+                              <div class = "row">
+                                <div class="col-md-6 embed-responsive embed-responsive-16by9">
+                                  <video width="600" height="440" controls>
+                                    <source src="exercises/Exercise_4.mp4" type="video/mp4">
+                                    <source src="exercises/Exercise_4.ogv" type="video/ogg">
+                                    <source src="exercises/Exercise_4.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                  </video>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-default btn-responsive-next"
+                            data-dismiss="modal" type="button">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab_e">
+              <h3> Options</h3>
+              <p>
+                <b>Previous Exercise: We have retrieved and displayed location information about our device and handled any errors that may occur. In this exercise we will learn about an additional step used to customize location information using options properties. </b>
+                <br><br>The image below shows all of the properties contained within the Options object. These options will customize the retrieval of the Position object when the getPosition and watchPosition methods successfully retrieve location information.
+              </p>
+              <img src="images/geolocation_option.png"  class="img-responsive center-block" width="500" height="170" alt ="geolocation options">
+              <p>
+                Any number of the options properties can be applied to the location information, it does not have to be all three. 
+                <br><br>The first step is to create an options object using object literal notation with the chosen properties set
+                <br><br>The properties which have been chosen are then applied to the position object which is then returned from the watchPosition or getPosition method when location information has been successfully retrieved. Take a look at the image below to see an example of applying options when calling the getCurrentPosition method 
+              </p>
+              <img src="images/google_options.jpg" alt = "geolocation options"  class="img-responsive center-block" width="700" height="170">
+              <p>
+                <button class="btn btn-responsive-next btn-success center-block" id="quiz7" data-target=
+                  "#Quiz7" data-toggle="modal" type="button">Quiz<span class="glyphicon glyphicon-question-sign" id="qicon7"></span>
+                </button>
+              <div class="modal fade " id="Quiz7" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button class="close" data-dismiss="modal" type=
+                        "button"><span>&times;</span></button>
+                      <h3 class="modal-title" id="Quiz7_title">Quiz</h3>
+                    </div>
+                    <div class="modal-body">
+                      <iframe height="800" src="quiz/quiz7.html"
+                        width="2000"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-default btn-responsive-next"
+                        data-dismiss="modal" type="button">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+               <!-- Exercise 5
+                ================================================== -->
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="complete5"
+                onclick="Progress15(this.id)">Complete <span class="glyphicon glyphicon-ok" id="cicon5"></span></button>
+              <button class="btn btn-responsive-next btn-warning btn pull-right" id="undo5" onclick="Undo15(this.id)">Undo <span class="glyphicon glyphicon-remove-circle" id="uicon5"></span></button>
+              <button class="btn btn-info btn-responsive-next" data-target=
+                "#exercise5" data-toggle="collapse" type=
+                "button">Exercise</button>
+              <div class="collapse" id="exercise5">
+                <p><b>Alter the code from the previous exercise and change the getPosition method to watchPosition</b>.
+                  <br><br>1) The watchPosition method call should include the enableHighAccuracy option.
+                  <br>2) Create a button called Stop Watching that will call a clearWatch function which stops updating the device's location
+                </p>
+                <div class="hint">
+                  <button class="btn btn-default btn-responsive-next"
+                    data-target="#hint5" data-toggle="collapse" type="button">See
+                  hint</button>
+                  <div class="collapse" id="hint5">
+                    <br>
+                    <p>The enableHighAccuracy option needs to be set to true and passed as an argument
+                      <br>The clearWatch method is used to clear the identifer returned by the watchPosition method
+                    </p>
+                  </div>
+                  <br><br><button class="btn btn-info btn-responsive-next" data-target=
+                    "#Modal5" data-toggle="modal" type="button">Edit
+                  Code</button>
+                  <div class="modal fade" id=
+                    "Modal5" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal" type=
+                            "button"><span>&times;</span></button>
+                          <h3 class="modal-title" id="Exercise5_title">Edit code</h3>
+                        </div>
+                        <div class="modal-body">
+                          <iframe src="Browser_editor.html" width="2000" height= "950"></iframe>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-info btn-responsive-next"
+                            data-target="#ModalA5" data-toggle="modal" type=
+                            "button">See Answer</button> <button class=
+                            "btn btn-default btn-responsive-next" data-dismiss=
+                            "modal" type="button">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id=
+                    "ModalA5" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button class="close" data-dismiss="modal" type=
+                            "button"><span>&times;</span></button>
+                          <h3 class="modal-title" id="Exercise5_title2">Exercise 5
+                            Answer
+                          </h3>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-md-6" ><iframe width = "600" height ="400" src="exercises/Exercise_5.txt"></iframe></div>
+                            <div>
+                              <div class = "row">
+                                <div class="col-md-6 embed-responsive embed-responsive-16by9">
+                                  <video width="600" height="440" controls>
+                                    <source src="exercises/Exercise_5.mp4" type="video/mp4">
+                                    <source src="exercises/Exercise_5.ogv" type="video/ogg">
+                                    <source src="exercises/Exercise_5.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                  </video>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-default btn-responsive-next"
+                            data-dismiss="modal" type="button">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab_f">
+              <h3>Google Maps</h3>
+              <p>
+                <b>Previous Exercise: You have retrieved your location with customised options. In this exercise you will learn how to plot the location information retrieved onto a map using the Google Maps API.</b> 
+                <br><br>The Google Maps JavaScript API allows users to embed Google Maps into their web pages. The API allows users to customize the look of the map and choose what information is shown. 
+                <br><br>In order to access the Google Maps API you will need to include the source of the API shown in the image below into your code.
+              </p>
+              <img src="images/map_src.jpg"  class="img-responsive center-block" width="600" height="300" alt = "map source">
+              <h4>Map</h4>
+              <p> The Maps object is stored within an object called google and this is used for all Google objects. To access any object relating to Google Maps we always start with <b>google.maps</b>
+                <br><br>To add a map to the page we need to create a new Map object by calling <b>google.maps.Map</b>. The map class accepts two parameters that are; 
+                <br><br><img src="images/map_Map.jpg"  class="img-responsive center-block" width="700" height="200" alt ="map">
+              </p>
+                <p class = "text-center"><br>A HTML element that you wish to draw the map on - this is usually a div element with an assigned id</p>
+                <p class = "text-center"><br>A google options object which controls how the map is displayed using various properties.</p>
+              <h4>Options</h4>
+              <p> Now we know how to create a map - what options are we able to control? Click the buttons below to see each property and what each property does</p>
+
+              <!-- Buttons changing Images
+                ================================================== -->
+              <div class="btn-group btn-group-justified">
+                <div class="btn-group">
+                  <a class="btn btn-default btn-responsive-quiz" role="button" onclick="displayImage5()">Zoom</a>
+                </div>
+                <div class="btn-group">
+                  <a class="btn btn-default btn-responsive-quiz" role="button" onclick="displayImage4()">Type</a>
+                </div>
+                <div class="btn-group">
+                  <a class="btn btn-default btn-responsive-quiz" role="button" onclick= "displayImage6()">Center</a>
+                </div>
+              </div>
+              <br><img class = "img-responsive center-block" id="googleMaps" src="images/google_zoom.jpg" alt = "google zoom">
+              <button class="btn btn-responsive-next btn-success center-block" id="quiz8" data-target=
+                "#Quiz8" data-toggle="modal" type="button">Quiz<span class="glyphicon glyphicon-question-sign" id="qicon8"></span>
+              </button>
+              <div class="modal fade " id="Quiz8" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button class="close" data-dismiss="modal" type=
+                        "button"><span>&times;</span></button>
+                      <h3 class="modal-title" id="Quiz8_title">Quiz</h3>
+                    </div>
+                    <div class="modal-body">
+                      <iframe height="800" src="quiz/quiz8.html"
+                        width="2000"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-default btn-responsive-next"
+                        data-dismiss="modal" type="button">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+               <!-- Exercise 6 
+                ================================================== -->
+              <button id ="complete6" onclick="Progress20(this.id)" class="btn btn-responsive-next btn-warning btn pull-right">Complete <span id = "cicon8" class="glyphicon glyphicon-ok"></span></button>
+              <button id ="undo6" onclick="Undo20(this.id)" class="btn btn-responsive-next btn-warning btn pull-right">Undo <span id = "uicon8" class="glyphicon glyphicon-remove-circle"></span></button>
+              <button type="button" class="btn btn-info btn-responsive-next" data-toggle="collapse" data-target="#exercise6">Exercise
+              </button>
+              <div id="exercise6" class="collapse">
+                <p>
+                  <b>Access the Google Maps API and ensure it shows your location as it updates. You will need to;</b>
+                  <br><br>1)Create a new Map object using the latitude and longitude properties from the geolocation API. 
+                  <br>2)Create an object literal containing the zoom, mapTypeId and center properties. These properties should all be initialized with values of your choice.
+                </p>
+                <div class = hint>
+                  <button type="button" class="btn btn-default btn-responsive-next" data-toggle="collapse" data-target="#hint6">See Hint
+                  </button>
+                  <div id="hint6" class="collapse">
+                    <br>
+                    <p>
+                      The Map object and options are added to the successCallBack function already defined in the previous exercises
+                      <br>The Map object requires you to create and pass a HTML element (e.g. a div assigned an id) and an options object. The options object needs each property with a value assigned.
+                    </p>
+                  </div>
+                </div>
+                <br><button class="btn btn-info btn-responsive-next" data-target=
+                  "#Modal6" data-toggle="modal" type="button">Edit
+                Code</button> 
+                <div class="modal fade" id=
+                  "Modal6" tabindex="-1">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button class="close" data-dismiss="modal" type=
+                          "button"><span>&times;</span></button>
+                        <h3 class="modal-title" id="Exercise6_title">Edit code</h3>
+                      </div>
+                      <div class="modal-body">
+                        <iframe src="Browser_editor.html" width="2000" height= "950"></iframe>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-info btn-responsive-next"
+                          data-target="#ModalA6" data-toggle="modal" type=
+                          "button">See Answer</button> <button class=
+                          "btn btn-default btn-responsive-next" data-dismiss=
+                          "modal" type="button">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal fade" id=
+                  "ModalA6" tabindex="-1">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button class="close" data-dismiss="modal" type=
+                          "button"><span>&times;</span></button>
+                        <h3 class="modal-title" id="Exercise6_title2">Exercise 6
+                          Answer
+                        </h3>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col-md-6" ><iframe width = "600" height ="400" src="exercises/Exercise_6.txt"></iframe></div>
+                          <div>
+                            <div class = "row">
+                              <div class="col-md-6 embed-responsive embed-responsive-16by9">
+                                <video width="600" height="440" controls>
+                                  <source src="exercises/Exercise_6.mp4" type="video/mp4">
+                                  <source src="exercises/Exercise_6.ogv" type="video/ogg">
+                                  <source src="exercises/Exercise_6.webm" type="video/webm">
+                                  Your browser does not support the video tag.
+                                </video>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-default btn-responsive-next"
+                          data-dismiss="modal" type="button">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class = "panel panel-default">
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2015 Harleen Buray</p>
+      </footer>
+    </div>
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="js/bootstrap.js"></script> 
+    <script src="js/functions.js"></script>
+    <script src="js/editor.js"></script>
+  </body>
+</html>

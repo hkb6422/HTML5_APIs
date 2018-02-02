@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      var answers = new Array(2);
+      answers[0] = "context.arc(x, y, radius, startAngle, endAngle, angleDirection)";
+      answers[1] = "6.28 radians";
+      answers[2] = "3.14 radians";
+      answers[3] = "clockwise";
+      
+      var totalQuestions = 4;
+      var totalChoices = 3;
+      
+      function getScore(form) {
+        var score = 0;
+        var buttonSelected;
+        for (i=0; i<totalQuestions; i++) { 
+          iterateChoices = i*totalChoices
+          for (y=0; y<totalChoices; y++) {
+            buttonSelected = form.elements[iterateChoices + y];
+            if (buttonSelected.checked && buttonSelected.value == answers[i]) {
+                score++;
+                break;
+            }
+          }
+        
+          document.getElementById("finalscore").innerHTML= "You got " + (score) + " out of " + (totalQuestions) + " questions correct!";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-md-offset-3">
+            <h2>Canvas Arc Quiz</h2>
+            <form id="Quiz" name="Quiz">
+              <br><b>1.What parameters does the arc method accept?</b>
+              <br><input name="q1" type="radio" value="context.arc(x, y, radius, startAngle, endAngle)">context.arc(x, y, radius, startAngle, endAngle)
+              <br><input name="q1" type="radio" value="context.arc(x, y, startAngle, endAngle)">context.arc(x, y, startAngle, endAngle)
+              <br><input name="q1" type="radio" value="context.arc(x, y, radius, startAngle, endAngle, angleDirection)">context.arc(x, y, radius, startAngle, endAngle, angleDirection)
+              <br><b>2.To draw a full circle what must the end angle parameter equal?</b>
+              <br><input name="q2" type="radio" value="6.28 radians">6.28 radians
+              <br><input name="q2" type="radio" value="6.28 degrees">6.28 degrees
+              <br><input name="q2" type="radio" value="360 radians">180 radians
+              <br><b>3. To draw half a circle what must the end angle equal?</b>
+              <br><input name="q3" type="radio" value="3.14 degrees">3.14 degrees
+              <br><input name="q3" type="radio" value="180 radians">180 radians
+              <br><input name="q3" type="radio" value="3.14 radians">3.14 radians
+              <br><b>4.What is the default value for the angle direction parameter if not specified?</b>
+              <br><input name="q4" type="radio" value="clockwise">clockwise
+              <br><input name="q4" type="radio" value="anti-clockwise">anti-clockwise
+              <br><input name="q4" type="radio" value="there is not a default">there is not a default
+              <br><br><input type = "button" class="btn btn-info btn-responsive-next" value = "Get Score" onClick="getScore(this.form)">
+              <br><br><input type="reset" value="Reset"  class="btn btn-info btn-responsive-next">
+            </form>
+            <br>
+            <p id="finalscore"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script>
+  </body>
+</html>

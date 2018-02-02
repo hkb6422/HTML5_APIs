@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz</title>
+    <meta charset="utf-8">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      //array to hold answers to questionnaire
+      var answers = new Array(4);
+      answers[0] = "timestamp and coords";
+      answers[1] = "latitude, longitude and accuracy";
+      answers[2] = "Position.coords.latitude";
+      answers[3] = "heading, speed, altitudeAccuracy";
+      answers[4] = "null";
+      
+      var totalQuestions = 5;
+      var totalChoices = 3;
+      
+      function getScore(form) {
+        var score = 0;
+        var buttonSelected;
+        for (i=0; i<totalQuestions; i++) { 
+          iterateChoices = i*totalChoices
+          for (y=0; y<totalChoices; y++) {
+            buttonSelected = form.elements[iterateChoices + y];
+            if (buttonSelected.checked && buttonSelected.value == answers[i]) {
+                score++;
+                break;
+            }
+          }
+        
+      document.getElementById("finalscore").innerHTML= "You got " + (score) + " out of " + (totalQuestions) + " questions correct!";
+        }
+      
+      }
+      	
+    </script>
+  </head>
+  <body>
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-md-offset-3">
+            <h2>Position object quiz</h2>
+            <form name="Quiz">
+              <br><b>What properties are contained within the position object?</b>
+              <br><input type="radio" name="q1" value="timestamp and coords">timestamp and coords
+              <br><input type="radio" name="q1" value="just timestamp">just timestamp
+              <br><input type="radio" name="q1" value="just coords">just coords
+              <br><b>2.What three properties contained within the coordinates object are guaranteed to be returned?</b>
+              <br><input type="radio" name="q2" value="latitude, longitude and speed">latitude, longitude and speed
+              <br><input type="radio" name="q2" value="latitude, longitude and accuracy">latitude, longitude and accuracy
+              <br><input type="radio" name="q2" value="latitude, speed and accuracy">latitude, speed and accuracy
+              <br><b>3.How do we access the latitude property of the coordinates object? </b>
+              <br><input type="radio" name="q3" value="Position.latitude">Position.latitude
+              <br><input type="radio" name="q3" value="Position.coords.latitude">Position.coords.latitude
+              <br><input type="radio" name="q3" value="coords.latitude">coords.latitude
+              <br><b>4.What properties are not guaranteed to be returned?</b>
+              <br><input type="radio" name="q4" value="heading, speed, altitudeAccuracy">heading, speed, altitudeAccuracy
+              <br><input type="radio" name="q4" value="heading, speed">heading, speed
+              <br><input type="radio" name="q4" value="timestamp, speed, heading">timestamp, speed, heading
+              <br><b>5.If the unguaranteed properties are not supported, what is returned?</b>
+              <br><input type="radio" name="q5" value="null">null
+              <br><input type="radio" name="q5" value="nothing">nothing
+              <br><input type="radio" name="q5" value="an error message">an error message
+              <br><br><input type = "button" class="btn btn-info btn-responsive-next" value = "Get Score" onClick="getScore(this.form)">
+              <br><br><input type="reset" value="Reset"  class="btn btn-info btn-responsive-next">
+            </form>
+            <br>
+            <p id = "finalscore"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script> 
+  </body>
+</html>

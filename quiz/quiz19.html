@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <script>
+      var answers = new Array(2);
+      answers[0] = "images and links";
+      answers[1] = "a div element with an assigned width and height";
+      answers[2] = "true";
+      answers[3] = "to make the drop zone more visible";
+      
+      var totalQuestions = 4;
+      var totalChoices = 3;
+      
+      function getScore(form) {
+        var score = 0;
+        var buttonSelected;
+        for (i=0; i<totalQuestions; i++) { 
+          iterateChoices = i*totalChoices
+          for (y=0; y<totalChoices; y++) {
+            buttonSelected = form.elements[iterateChoices + y];
+            if (buttonSelected.checked && buttonSelected.value == answers[i]) {
+                score++;
+                break;
+            }
+          }
+        
+          document.getElementById("finalscore").innerHTML= "You got " + (score) + " out of " + (totalQuestions) + " questions correct!";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="welcome">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-md-offset-3">
+            <h2>Drag and drop elements quiz</h2>
+            <form id="Quiz" name="Quiz">
+              <br><b>1.What elements are by default draggable?</b>
+              <br><input name="q1" type="radio" value="images and links">images and links
+              <br><input name="q1" type="radio" value="images">images
+              <br><input name="q1" type="radio" value="links">links
+              <br><b>2.What is needed to create a drop area?</b>
+              <br><input name="q2" type="radio" value="a div element with the draggable attribute set to true">a div element with the draggable attribute set to true
+              <br><input name="q2" type="radio" value="a div element">a div element
+              <br><input name="q2" type="radio" value="a div element with an assigned width and height">a div element with an assigned width and height
+              <br><b>3.What does the draggable attribute need to be set to to make any element draggable?</b>
+              <br><input name="q3" type="radio" value="true">true
+              <br><input name="q3" type="radio" value="enable">enable
+              <br><input name="q3" type="radio" value="yes">yes
+              <br><b>4.Why is it benefical to add a border around the drag area?</b>
+              <br><input name="q4" type="radio" value="to make the drop zone more visible">to make the drop zone more visible
+              <br><input name="q4" type="radio" value="it is not benefical">it is not benefical
+              <br><input name="q4" type="radio" value="none of the above">none of the above
+              <br><br><input type = "button" class="btn btn-info btn-responsive-next" value = "Get Score" onClick="getScore(this.form)">
+              <br><br><input type="reset" value="Reset"  class="btn btn-info btn-responsive-next">
+            </form>
+            <br>
+            <p id="finalscore"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script>
+  </body>
+</html>

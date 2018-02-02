@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geolocation Example</title>
+    <script>
+      function getLocation(){
+      if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(successCallBack);
+      }
+      else {
+      alert("Geolocation is not supported by this browser");
+        }
+      }
+      
+    </script>
+  </head>
+  <body>
+    <h3> Geolocation Example </h3>
+    <button onclick="getLocation()">Get Location</button>
+  </body>
+</html>

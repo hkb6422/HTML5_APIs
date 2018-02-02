@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas Example</title>
+    <style>
+      #myCanvas{
+      background:white;
+      border: 3px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+    <script>
+      var canvas = document.getElementById('myCanvas');
+      if (canvas.getContext) {
+      
+      var ctx = canvas.getContext('2d');
+      
+      var grad = ctx.createRadialGradient(100, 75, 5, 100, 75, 70);
+      grad.addColorStop(0, '#9999CC');
+      grad.addColorStop(1 / 4, '#990099');
+      grad.addColorStop(2 / 4, '#CC0066');
+      grad.addColorStop(3 / 4, '#333333');
+      
+      ctx.arc(100, 75, 60, 0, 2 * Math.PI);
+      
+      ctx.fillStyle = grad;
+      ctx.fill();
+      }
+      
+      else {
+      alert("Sorry your browser doesn't support the Canvas API");
+      }
+    </script> 
+  </body>
+</html>

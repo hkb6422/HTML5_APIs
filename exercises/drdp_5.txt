@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drag and Drop Example</title>
+    <style>
+      #dropZone{
+      border: 3px solid black;
+      height: 300px;
+      width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <img src = "bridge.jpg" id = "image1" width = "200" height = "200">
+    <h3 id = "dropZone">Drop Element Here</h3>
+    <h3 id = "startCount">Drag Start: 0</h3>
+    <h3 id = "endCount">Drag End: 0</h3>
+    <h3 id = "enterCount">Drag Enter: 0</h3>
+    <h3 id = "leaveCount">Drag Leave: 0</h3>
+    <h3 id = "overCount">Drag Over: 0</h3>
+    <h3 id = "dropCount">Drop: 0</h3>
+    <button type = "button" onclick = "window.location.reload()">Reset</button>
+    <script>
+      var draggable = document.getElementById("image1");
+      var droptarget = document.getElementById("dropZone");
+      
+      draggable.addEventListener('dragstart',handleStart);
+      draggable.addEventListener('dragend', handleEnd);
+      
+      droptarget.addEventListener('dragleave',handleLeave);
+      droptarget.addEventListener('drop', handledrop);
+      droptarget.addEventListener('dragenter',handleEnter);
+      droptarget.addEventListener('dragover',handleOver);
+      
+      count1 = 1;
+      count2 = 1;
+      count3 = 1;
+      count4 = 1;
+      count5 = 1;
+      count6 = 1;
+      
+      function handleStart(event){
+      event.dataTransfer.setData("text",event.target.id);
+      count_start = count1++;
+      document.getElementById("startCount").innerHTML = "Drag Start: "+ count_start;
+      }
+      
+      function handleEnd(event){
+      count_end = count2++;
+      document.getElementById("endCount").innerHTML = "Drag End: " + count_end;
+      }
+      
+      function handleEnter(event){
+      count_enter = count3++;
+      document.getElementById("enterCount").innerHTML = "Drag Enter: " + counter_enter;
+      }
+      
+      function handleOver(event){
+      count_over = count4++;
+      document.getElementById("overCount").innerHTML = "Drag Over: " + count_over;
+      event.preventDefault();
+      }
+      
+      function handleLeave(event){
+      count_leave = count5++;
+      document.getElementById("leaveCount").innerHTHML = "Drag Leave: " + count_leave;
+      }
+      
+      function handledrop(event){
+      event.preventDefault();
+      var dragged_item = event.dataTransfer.getData("text");
+      event.target.appendChild(document.getElementById(dragged_item));
+      count_drop = count6++;
+      document.getElementById("dropCount").innerHTML = "Drop: " + count_drop;
+      }
+
+    </script>
+  </body>
+</html>
